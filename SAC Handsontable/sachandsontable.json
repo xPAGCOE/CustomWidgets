@@ -13,21 +13,21 @@
       {
         "kind": "main",
         "tag": "com-sap-sample-sachandsontable",
-        "url": "https://192.168.52.128/custom_widgets/sachandsontable/sachandsontable.js",
+        "url": "https://xpagcoe.github.io/CustomWidgets/SAC%20Handsontable/sachandsontable.js",
         "integrity": "",
         "ignoreIntegrity": true
       },
 	  {
 		"kind": "builder",
 		"tag": "com-sap-sample-sachandsontable-builder",
-		"url": "https://192.168.52.128/custom_widgets/sachandsontable/sachandsontable_builder.js",
+		"url": "https://xpagcoe.github.io/CustomWidgets/SAC%20Handsontable/sachandsontable_builder.js",
 		"integrity": "",
 		"ignoreIntegrity": true
       },
 	  {
 		"kind": "styling",
 		"tag": "com-sap-sample-sachandsontable-styling",
-		"url": "https://192.168.52.128/custom_widgets/sachandsontable/sachandsontable_styling.js",
+		"url": "https://xpagcoe.github.io/CustomWidgets/SAC%20Handsontable/sachandsontable_styling.js",
 		"integrity": "",
 		"ignoreIntegrity": true
       }
