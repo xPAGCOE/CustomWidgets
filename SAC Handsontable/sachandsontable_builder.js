@@ -15,11 +15,11 @@
 			</tr>
 			<tr>
 				<td>Columns headers</td>
-				<td><input id="builder_columns_headers" type="text" size="40" maxlength="255"></td>
+				<td><input id="builder_columns_headers" type="text" size="40"></td>
 			</tr>
 			<tr>
 				<td>Columns types</td>
-				<td><input id="builder_columns_types" type="text" size="40" maxlength="255"></td>
+				<td><input id="builder_columns_types" type="text" size="40"></td>
 			</tr>
 		</table>
 		<input type="submit" style="display:none;">
