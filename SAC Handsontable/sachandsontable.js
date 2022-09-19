@@ -134,7 +134,14 @@ var getScriptPromisify = (src) => {
 				console.log(this.colTypes2);
 			}
 			
-			this.loadWidget();
+			if(this.htable === null) {
+				this.loadWidget();
+			}
+			else {
+				this.reloadWidget({ startCols: this.colCount,
+									colHeaders: this.colHeaders,
+									columns: this.colTypes2 });
+			}
 		}
 		
 		connectedCallback(){
