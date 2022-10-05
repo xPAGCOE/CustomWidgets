@@ -8,7 +8,7 @@
     "newInstancePrefix": "SACJavaScriptHelper",
     "description": "A widget that wraps common JS library objects",
 	"icon": "",
-    "imports": ["input-controls"],
+    "imports": ["input-controls", "datasource"],
     "webcomponents": [
       {
         "kind": "main",
@@ -27,9 +27,22 @@
     },
     "methods": {
 		"createMap": {
-			"returnType": "Object",
-			"description": "Create a new Map",
+			"returnType": "Selection",
+			"description": "Create a new Map object and return it as JSON string",
 			"parameters": []
+		},
+		"setMapItem": {
+			"returnType": "Selection",
+			"description": "Set a key-value pair",
+			"parameters": [ {"name": "map", "type": "Selection", "description": "Map object"},
+							{"name": "key", "type": "string", "description": "Key index"},
+							{"name": "value", "type": "Selection", "description": "Value as JSON string"} ]
+		},
+		"getMapItem": {
+			"returnType": "Selection",
+			"description": "Get a value from key",
+			"parameters": [ {"name": "map", "type": "Selection", "description": "Map object"},
+							{"name": "key", "type": "string", "description": "Key index"} ]
 		}
     },
     "events": {

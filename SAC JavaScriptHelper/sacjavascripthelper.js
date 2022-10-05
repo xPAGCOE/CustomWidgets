@@ -59,16 +59,43 @@ var getScriptPromisify = (src) => {
 		// Methods
 		
 		createMap() {
-			return new Map();
+			return JSON.stringify(new Map());
 		}
-
-		// Custom events handlers
-        // afterOnCellCornerMouseDown
-		/*
-		afterOnCellCornerMouseDownHandler (evt) {
-			console.log("afterOnCellCornerMouseDown triggered");
+		
+		setMapItem(map, key, value) {
+			
+			try {
+				var obj_map = JSON.parse(map);
+				
+				if(obj_map !== undefined) {
+					obj_map.set(key, value);
+					return JSON.stringify(obj_map);
+				}
+			}
+			catch(e) {
+				console.log(e.stack);
+				console.log(e.message);
+			}
+			
+			return map;
 		}
-		*/
+		
+		getMapItem(map, key) {
+			try {
+				var obj_map = JSON.parse(map);
+				
+				if(obj_map !== undefined) {
+					return JSON.stringify(obj_map.get(key));
+				}
+			}
+			catch(e) {
+				console.log(e.stack);
+				console.log(e.message);
+			}
+			
+			return "";
+		}
+        
     }
 
     window.customElements.define('com-sap-sample-sacjavascripthelper', SACJavaScriptHelper);
