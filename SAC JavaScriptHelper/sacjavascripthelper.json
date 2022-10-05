@@ -8,7 +8,7 @@
     "newInstancePrefix": "SACJavaScriptHelper",
     "description": "A widget that wraps common JS library objects",
 	"icon": "",
-    "imports": ["input-controls", "datasource"],
+    "imports": ["datasource", "input-controls"],
     "webcomponents": [
       {
         "kind": "main",
@@ -27,21 +27,21 @@
     },
     "methods": {
 		"createMap": {
-			"returnType": "Selection",
+			"returnType": "boolean",
 			"description": "Create a new Map object and return it as JSON string",
-			"parameters": []
+			"parameters": [ {"name": "map_id", "type": "string", "description": "Map object unique id"} ]
 		},
 		"setMapItem": {
-			"returnType": "Selection",
+			"returnType": "boolean",
 			"description": "Set a key-value pair",
-			"parameters": [ {"name": "map", "type": "Selection", "description": "Map object"},
+			"parameters": [ {"name": "map_id", "type": "string", "description": "Map object unique id"},
 							{"name": "key", "type": "string", "description": "Key index"},
 							{"name": "value", "type": "Selection", "description": "Value as JSON string"} ]
 		},
 		"getMapItem": {
 			"returnType": "Selection",
 			"description": "Get a value from key",
-			"parameters": [ {"name": "map", "type": "Selection", "description": "Map object"},
+			"parameters": [ {"name": "map_id", "type": "string", "description": "Map object unique id"},
 							{"name": "key", "type": "string", "description": "Key index"} ]
 		}
     },

@@ -34,6 +34,9 @@ var getScriptPromisify = (src) => {
             shadowRoot.appendChild(template.content.cloneNode(true));
     
             this._props = {};
+			
+			// JS objects Map
+			this.objects_map = new Map();
         }
 		
 		// loadWidget
@@ -58,42 +61,42 @@ var getScriptPromisify = (src) => {
 		
 		// Methods
 		
-		createMap() {
-			return JSON.stringify(new Map());
+		// Javascript Map proxy
+		createMap(map_id) {
+			
+			var bresult = false;
+			
+			if(!this.objects_map.has(map_id)) {
+				this.objects_map.set(map_id, new Map());
+				bresult = this.objects_map.has(map_id);
+			}
+			
+			return bresult;
 		}
 		
-		setMapItem(map, key, value) {
+		setMapItem(map_id, key, value) {
 			
-			try {
-				var obj_map = JSON.parse(map);
-				
-				if(obj_map !== undefined) {
-					obj_map.set(key, value);
-					return JSON.stringify(obj_map);
-				}
-			}
-			catch(e) {
-				console.log(e.stack);
-				console.log(e.message);
+			var bresult = false;
+			
+			if(this.objects_map.has(map_id)) {
+				let map = this.objects_map.get(map_id);
+				map.set(key, value);
+				bresult = map.has(key);
 			}
 			
-			return map;
+			return bresult;
 		}
 		
-		getMapItem(map, key) {
-			try {
-				var obj_map = JSON.parse(map);
-				
-				if(obj_map !== undefined) {
-					return JSON.stringify(obj_map.get(key));
-				}
-			}
-			catch(e) {
-				console.log(e.stack);
-				console.log(e.message);
+		getMapItem(map_id, key) {
+			
+			var sresult = {};
+			
+			if(this.objects_map.has(map_id)) {
+				let map = this.objects_map.get(map_id);
+				sresult = map.get(key);
 			}
 			
-			return "";
+			return sresult;
 		}
         
     }
