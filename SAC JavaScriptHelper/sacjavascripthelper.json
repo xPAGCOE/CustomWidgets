@@ -27,7 +27,7 @@
     },
     "methods": {
 		"createMap": {
-			"returnType": "object<Map>",
+			"returnType": "Object",
 			"description": "Create a new Map",
 			"parameters": []
 		}
