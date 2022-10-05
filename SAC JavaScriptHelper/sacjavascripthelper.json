@@ -1,0 +1,37 @@
+{
+    "eula": "",
+    "vendor": "SAP",
+    "license": "",
+    "id": "com.sap.sample.sacjavascripthelper",
+    "version": "0.1",
+    "name": "JavaScript Helper for SAC",
+    "newInstancePrefix": "SACJavaScriptHelper",
+    "description": "A widget that wraps common JS library objects",
+	"icon": "",
+    "imports": ["standard"],
+    "webcomponents": [
+      {
+        "kind": "main",
+        "tag": "com-sap-sample-sacjavascripthelper",
+        "url": "https://xpagcoe.github.io/CustomWidgets/SACJavaScriptHelper/sacjavascripthelper.js",
+        "integrity": "",
+        "ignoreIntegrity": true
+      }
+    ],
+    "properties": {
+		"metadata": {
+			"type": "string",
+			"description": "For internal use",
+			"default": ""
+		}
+    },
+    "methods": {
+		"createMap": {
+			"returnType": "object<Map>",
+			"description": "Create a new Map",
+			"parameters": []
+		}
+    },
+    "events": {
+    }
+}
