@@ -36,6 +36,11 @@
 			"description": "Remove all elements from a Map object",
 			"parameters": [ {"name": "map_id", "type": "string", "description": "Map object unique id"} ]
 		},
+		"deleteMap": {
+			"returnType": "boolean",
+			"description": "Delete an existing Map object",
+			"parameters": [ {"name": "map_id", "type": "string", "description": "Map object unique id"} ]
+		},
 		"setMapItem": {
 			"returnType": "boolean",
 			"description": "Set a key-value pair",
