@@ -19,7 +19,7 @@ var getScriptPromisify = (src) => {
 		overflow: overlay;
     }
 	</style>
-    <div id="main_container" width="100%">
+    <div id="main_container" hidden>
     </div>
     `;
 
