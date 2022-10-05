@@ -61,7 +61,7 @@ var getScriptPromisify = (src) => {
 		
 		// Methods
 		
-		// Javascript Map proxy
+		// Map proxy
 		createMap(map_id) {
 			
 			var bresult = false;
@@ -69,6 +69,19 @@ var getScriptPromisify = (src) => {
 			if(!this.objects_map.has(map_id)) {
 				this.objects_map.set(map_id, new Map());
 				bresult = this.objects_map.has(map_id);
+			}
+			
+			return bresult;
+		}
+		
+		clearMap(map_id) {
+			
+			var bresult = false;
+			
+			if(this.objects_map.has(map_id)) {
+				let map = this.objects_map.get(map_id);
+				map.clear();
+				bresult = (map.size === 0);
 			}
 			
 			return bresult;
@@ -97,6 +110,57 @@ var getScriptPromisify = (src) => {
 			}
 			
 			return sresult;
+		}
+		
+		deleteMapItem(map_id, key) {
+			
+			var bresult = false;
+			
+			if(this.objects_map.has(map_id)) {
+				let map = this.objects_map.get(map_id);
+				bresult = map.delete(key);
+			}
+			
+			return bresult;
+		}
+		
+		hasMapItem(map_id, key) {
+			
+			var bresult = false;
+			
+			if(this.objects_map.has(map_id)) {
+				let map = this.objects_map.get(map_id);
+				bresult = map.has(key);
+			}
+			
+			return bresult;
+		}
+		
+		getMapItems(map_id) {
+			
+			var tresult = null;
+			
+			if(this.objects_map.has(map_id)) {
+				let map = this.objects_map.get(map_id);
+				tresult = new Array(map.size);
+				for(var ite_map of map) {
+					tresult.push(ite_map.value);
+				}
+			}
+			
+			return tresult;
+		}
+		
+		getMapSize(map_id) {
+			
+			var nresult = 0;
+			
+			if(this.objects_map.has(map_id)) {
+				let map = this.objects_map.get(map_id);
+				nresult = map.size;
+			}
+			
+			return nresult;
 		}
         
     }
