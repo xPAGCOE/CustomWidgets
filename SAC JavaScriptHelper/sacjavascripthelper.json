@@ -8,7 +8,7 @@
     "newInstancePrefix": "SACJavaScriptHelper",
     "description": "A widget that wraps common JS library objects",
 	"icon": "",
-    "imports": ["standard"],
+    "imports": ["input-controls"],
     "webcomponents": [
       {
         "kind": "main",
