@@ -23,7 +23,7 @@ var getScriptPromisify = (src) => {
     </div>
     `;
 
-    class SACHandsonTable extends HTMLElement{
+    class SACJavaScriptHelper extends HTMLElement{
 		
         constructor(){
             console.log("constructor call");
@@ -34,9 +34,6 @@ var getScriptPromisify = (src) => {
             shadowRoot.appendChild(template.content.cloneNode(true));
     
             this._props = {};
-			
-			this.htable = null;
-			this.data = null;
         }
 		
 		// loadWidget
@@ -59,10 +56,10 @@ var getScriptPromisify = (src) => {
 			console.log("connectedCallback call");
 		}
 		
-		// Setters & Getters
+		// Methods
 		
-		getData() {
-			return this.data;
+		createMap() {
+			return new Map();
 		}
 
 		// Custom events handlers
