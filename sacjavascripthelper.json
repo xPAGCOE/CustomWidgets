@@ -1,0 +1,177 @@
+{
+    "eula": "",
+    "vendor": "SAP",
+    "license": "",
+    "id": "com.sap.sample.sacjavascripthelper",
+    "version": "0.0.3",
+    "name": "JavaScript Helper for SAC",
+    "newInstancePrefix": "SACJavaScriptHelper",
+    "description": "A widget that wraps common JS library objects",
+	"icon": "",
+    "imports": ["datasource", "input-controls"],
+    "webcomponents": [
+      {
+        "kind": "main",
+        "tag": "com-sap-sample-sacjavascripthelper",
+        "url": "https://xpagcoe.github.io/CustomWidgets/SAC%20JavaScriptHelper/sacjavascripthelper.js",
+        "integrity": "",
+        "ignoreIntegrity": true
+      }
+    ],
+    "properties": {
+		"metadata": {
+			"type": "string",
+			"description": "For internal use",
+			"default": ""
+		}
+    },
+    "methods": {
+		"createMap": {
+			"returnType": "boolean",
+			"description": "Create a new Map object and return true when success",
+			"parameters": [ {"name": "map_id", "type": "string", "description": "Map object unique id"} ]
+		},
+		"clearMap": {
+			"returnType": "boolean",
+			"description": "Remove all elements from a Map object",
+			"parameters": [ {"name": "map_id", "type": "string", "description": "Map object unique id"} ]
+		},
+		"deleteMap": {
+			"returnType": "boolean",
+			"description": "Delete an existing Map object",
+			"parameters": [ {"name": "map_id", "type": "string", "description": "Map object unique id"} ]
+		},
+		"setMapItem": {
+			"returnType": "boolean",
+			"description": "Set a key-value pair",
+			"parameters": [ {"name": "map_id", "type": "string", "description": "Map object unique id"},
+							{"name": "key", "type": "string", "description": "Key index"},
+							{"name": "value", "type": "Selection", "description": "Value as JSON string"} ]
+		},
+		"getMapItem": {
+			"returnType": "Selection",
+			"description": "Get a value from key",
+			"parameters": [ {"name": "map_id", "type": "string", "description": "Map object unique id"},
+							{"name": "key", "type": "string", "description": "Key index"} ]
+		},
+		"deleteMapItem": {
+			"returnType": "boolean",
+			"description": "Remove the specified element from a Map object by key",
+			"parameters": [ {"name": "map_id", "type": "string", "description": "Map object unique id"},
+							{"name": "key", "type": "string", "description": "Key index"} ]
+		},
+		"hasMapItem": {
+			"returnType": "boolean",
+			"description": "Return whether an element with the specified key exists",
+			"parameters": [ {"name": "map_id", "type": "string", "description": "Map object unique id"},
+							{"name": "key", "type": "string", "description": "Key index"} ]
+		},
+		"getMapItems": {
+			"returnType": "Selection[]",
+			"description": "Return elements of the Map according to their insertion order",
+			"parameters": [ {"name": "map_id", "type": "string", "description": "Map object unique id"} ]
+		},
+		"getMapSize": {
+			"returnType": "integer",
+			"description": "Return the number of elements",
+			"parameters": [ {"name": "map_id", "type": "string", "description": "Map object unique id"} ]
+		},
+		"createSet": {
+			"returnType": "boolean",
+			"description": "Create a new Set object and return true when success",
+			"parameters": [ {"name": "set_id", "type": "string", "description": "Set object unique id"} ]
+		},
+		"clearSet": {
+			"returnType": "boolean",
+			"description": "Remove all elements from a Set object",
+			"parameters": [ {"name": "set_id", "type": "string", "description": "Set object unique id"} ]
+		},
+		"deleteSet": {
+			"returnType": "boolean",
+			"description": "Delete an existing Set object",
+			"parameters": [ {"name": "set_id", "type": "string", "description": "Set object unique id"} ]
+		},
+		"addSetItem": {
+			"returnType": "boolean",
+			"description": "Add a new unique value at the end of the Set",
+			"parameters": [ {"name": "set_id", "type": "string", "description": "Set object unique id"},
+							{"name": "value", "type": "Selection", "description": "Value as JSON string"} ]
+		},
+		"deleteSetItem": {
+			"returnType": "boolean",
+			"description": "Remove the specified element from a Set",
+			"parameters": [ {"name": "set_id", "type": "string", "description": "Set object unique id"},
+							{"name": "value", "type": "Selection", "description": "Value as JSON string"} ]
+		},
+		"hasSetItem": {
+			"returnType": "boolean",
+			"description": "Return whether an element exists",
+			"parameters": [ {"name": "set_id", "type": "string", "description": "Set object unique id"},
+							{"name": "value", "type": "Selection", "description": "Value as JSON string"} ]
+		},
+		"getSetItems": {
+			"returnType": "Selection[]",
+			"description": "Return elements of the Set according to their insertion order",
+			"parameters": [ {"name": "set_id", "type": "string", "description": "Set object unique id"} ]
+		},
+		"getSetSize": {
+			"returnType": "integer",
+			"description": "Return the number of elements",
+			"parameters": [ {"name": "set_id", "type": "string", "description": "Set object unique id"} ]
+		},
+		"setLocalStorageItem": {
+			"returnType": "boolean",
+			"description": "Return true when setting is successfull",
+			"parameters": [ {"name": "key", "type": "string", "description": "Key index"},
+							{"name": "value", "type": "string", "description": "Value"} ]
+		},
+		"getLocalStorageItem": {
+			"returnType": "string",
+			"description": "Return item identified by key",
+			"parameters": [ {"name": "key", "type": "string", "description": "Key index"} ]
+		},
+		"removeLocalStorageItem": {
+			"returnType": "boolean",
+			"description": "Return true when remove is successfull",
+			"parameters": [ {"name": "key", "type": "string", "description": "Key index"} ]
+		},
+		"clearLocalStorage": {
+			"returnType": "boolean",
+			"description": "Return true when clear is successfull",
+			"parameters": []
+		},
+		"getLocalStorageLength": {
+			"returnType": "int",
+			"description": "Return length property value",
+			"parameters": []
+		},
+		"setSessionStorageItem": {
+			"returnType": "boolean",
+			"description": "Return true when setting is successfull",
+			"parameters": [ {"name": "key", "type": "string", "description": "Key index"},
+							{"name": "value", "type": "string", "description": "Value"} ]
+		},
+		"getSessionStorageItem": {
+			"returnType": "string",
+			"description": "Return item identified by key",
+			"parameters": [ {"name": "key", "type": "string", "description": "Key index"} ]
+		},
+		"removeSessionStorageItem": {
+			"returnType": "boolean",
+			"description": "Return true when remove is successfull",
+			"parameters": [ {"name": "key", "type": "string", "description": "Key index"} ]
+		},
+		"clearSessionStorage": {
+			"returnType": "boolean",
+			"description": "Return true when clear is successfull",
+			"parameters": []
+		},
+		"getSessionStorageLength": {
+			"returnType": "int",
+			"description": "Return length property value",
+			"parameters": []
+		}
+    },
+    "events": {
+    }
+}
