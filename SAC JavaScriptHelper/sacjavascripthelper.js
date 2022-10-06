@@ -277,6 +277,21 @@ var getScriptPromisify = (src) => {
 			return nresult;
 		}
 		
+		populateSet(set_id, items) {
+			var bresult = false;
+			
+			if(this.objects_map.has(set_id)) {
+				let set = this.objects_map.get(set_id);
+				set.clear();
+				for(const item in items) {
+					set.add(item);
+				}
+				bresult = (set.size === items.length);
+			}
+			
+			return bresult;
+		}
+		
 		// Local Storage proxy
 		setLocalStorageItem(key, value) {
 			var bresult = false;
