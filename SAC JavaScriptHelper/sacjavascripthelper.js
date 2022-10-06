@@ -151,7 +151,7 @@ var getScriptPromisify = (src) => {
 		
 		getMapItems(map_id) {
 			
-			tresult = new Array(0);
+			var tresult = new Array(0);
 			
 			if(this.objects_map.has(map_id)) {
 				let map = this.objects_map.get(map_id);
