@@ -276,6 +276,148 @@ var getScriptPromisify = (src) => {
 			
 			return nresult;
 		}
+		
+		// Local Storage proxy
+		setLocalStorageItem(key, value) {
+			var bresult = false;
+			
+			try {
+				var nlen = localStorage.length;
+				localStorage.setItem(key, value);
+				bresult = (localStorage.length === ++nlen);
+			}
+			catch(e) {
+				bresult = false;
+			}
+			
+			return bresult;
+		}
+		
+		getLocalStorageItem(key) {
+			var sresult = "";
+			
+			try {
+				sresult = localStorage.getItem(key);
+			}
+			catch(e) {
+				sresult = "";
+			}
+			
+			return sresult;
+		}
+		
+		removeLocalStorageItem(key) {
+			var bresult = false;
+			
+			try {
+				var nlen = localStorage.length;
+				localStorage.removeItem(key);
+				bresult = (localStorage.length === --nlen);
+			}
+			catch(e) {
+				bresult = false;
+			}
+			
+			return bresult;
+		}
+		
+		clearLocalStorage() {
+			var bresult = false;
+			
+			try {
+				localStorage.clear();
+				bresult = (localStorage.length === 0);
+			}
+			catch(e) {
+				bresult = false;
+			}
+			
+			return bresult;
+		}
+		
+		getLocalStorageLength() {
+			var nresult = 0;
+			
+			try {
+				nresult = localStorage.length;
+			}
+			catch(e) {
+				nresult = -1;
+			}
+			
+			return nresult;
+		}
+		
+		// Session Storage proxy
+		setSessionStorageItem(key, value) {
+			var bresult = false;
+			
+			try {
+				var nlen = localStorage.length;
+				sessionStorage.setItem(key, value);
+				bresult = (sessionStorage.length === ++nlen);
+			}
+			catch(e) {
+				bresult = false;
+			}
+			
+			return bresult;
+		}
+		
+		getSessionStorageItem(key) {
+			var sresult = "";
+			
+			try {
+				sresult = sessionStorage.getItem(key);
+			}
+			catch(e) {
+				sresult = "";
+			}
+			
+			return sresult;
+		}
+		
+		removeSessionStorageItem(key) {
+			var bresult = false;
+			
+			try {
+				var nlen = sessionStorage.length;
+				sessionStorage.removeItem(key);
+				bresult = (sessionStorage.length === --nlen);
+			}
+			catch(e) {
+				bresult = false;
+			}
+			
+			return bresult;
+		}
+		
+		clearSessionStorage() {
+			var bresult = false;
+			
+			try {
+				sessionStorage.clear();
+				bresult = (sessionStorage.length === 0);
+			}
+			catch(e) {
+				bresult = false;
+			}
+			
+			return bresult;
+		}
+		
+		getSessionStorageLength() {
+			var nresult = 0;
+			
+			try {
+				nresult = sessionStorage.length;
+			}
+			catch(e) {
+				nresult = -1;
+			}
+			
+			return nresult;
+		}
         
     }
 
