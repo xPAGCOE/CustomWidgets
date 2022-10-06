@@ -3,7 +3,7 @@
     "vendor": "SAP",
     "license": "",
     "id": "com.sap.sample.sacjavascripthelper",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "name": "JavaScript Helper for SAC",
     "newInstancePrefix": "SACJavaScriptHelper",
     "description": "A widget that wraps common JS library objects",
@@ -28,7 +28,7 @@
     "methods": {
 		"createMap": {
 			"returnType": "boolean",
-			"description": "Create a new Map object and return it as JSON string",
+			"description": "Create a new Map object and return true when success",
 			"parameters": [ {"name": "map_id", "type": "string", "description": "Map object unique id"} ]
 		},
 		"clearMap": {
@@ -68,13 +68,56 @@
 		},
 		"getMapItems": {
 			"returnType": "Selection[]",
-			"description": "Return elements of the map according to their insertion order",
+			"description": "Return elements of the Map according to their insertion order",
 			"parameters": [ {"name": "map_id", "type": "string", "description": "Map object unique id"} ]
 		},
 		"getMapSize": {
 			"returnType": "integer",
 			"description": "Return the number of elements",
 			"parameters": [ {"name": "map_id", "type": "string", "description": "Map object unique id"} ]
+		},
+		"createSet": {
+			"returnType": "boolean",
+			"description": "Create a new Set object and return true when success",
+			"parameters": [ {"name": "set_id", "type": "string", "description": "Set object unique id"} ]
+		},
+		"clearSet": {
+			"returnType": "boolean",
+			"description": "Remove all elements from a Set object",
+			"parameters": [ {"name": "set_id", "type": "string", "description": "Set object unique id"} ]
+		},
+		"deleteSet": {
+			"returnType": "boolean",
+			"description": "Delete an existing Set object",
+			"parameters": [ {"name": "set_id", "type": "string", "description": "Set object unique id"} ]
+		},
+		"addSetItem": {
+			"returnType": "boolean",
+			"description": "Add a new unique value at the end of the Set",
+			"parameters": [ {"name": "set_id", "type": "string", "description": "Set object unique id"},
+							{"name": "value", "type": "Selection", "description": "Value as JSON string"} ]
+		},
+		"deleteSetItem": {
+			"returnType": "boolean",
+			"description": "Remove the specified element from a Set",
+			"parameters": [ {"name": "set_id", "type": "string", "description": "Set object unique id"},
+							{"name": "value", "type": "Selection", "description": "Value as JSON string"} ]
+		},
+		"hasSetItem": {
+			"returnType": "boolean",
+			"description": "Return whether an element exists",
+			"parameters": [ {"name": "set_id", "type": "string", "description": "Set object unique id"},
+							{"name": "value", "type": "Selection", "description": "Value as JSON string"} ]
+		},
+		"getSetItems": {
+			"returnType": "Selection[]",
+			"description": "Return elements of the Set according to their insertion order",
+			"parameters": [ {"name": "set_id", "type": "string", "description": "Set object unique id"} ]
+		},
+		"getSetSize": {
+			"returnType": "integer",
+			"description": "Return the number of elements",
+			"parameters": [ {"name": "set_id", "type": "string", "description": "Set object unique id"} ]
 		}
     },
     "events": {

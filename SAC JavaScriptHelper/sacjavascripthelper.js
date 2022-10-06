@@ -174,6 +174,108 @@ var getScriptPromisify = (src) => {
 			
 			return nresult;
 		}
+		
+		// Set proxy
+		createSet(set_id) {
+			
+			var bresult = false;
+			
+			if(!this.objects_map.has(set_id)) {
+				this.objects_map.set(set_id, new Set());
+				bresult = this.objects_map.has(set_id);
+			}
+			
+			return bresult;
+		}
+		
+		clearSet(set_id) {
+			
+			var bresult = false;
+			
+			if(this.objects_map.has(set_id)) {
+				let set = this.objects_map.get(set_id);
+				set.clear();
+				bresult = (set.size === 0);
+			}
+			
+			return bresult;
+		}
+		
+		deleteSet(set_id) {
+			
+			var bresult = false;
+			
+			if(this.objects_map.has(set_id)) {
+				let set = this.objects_map.get(set_id);
+				set.clear();
+				bresult = this.objects_map.delete(set_id);
+			}
+			
+			return bresult;
+		}
+		
+		addSetItem(set_id, value) {
+			
+			var bresult = false;
+			
+			if(this.objects_map.has(set_id)) {
+				let set = this.objects_map.get(set_id);
+				set.add(value);
+				bresult = set.has(value);
+			}
+			
+			return bresult;
+		}
+		
+		deleteSetItem(set_id, value) {
+			
+			var bresult = false;
+			
+			if(this.objects_map.has(set_id)) {
+				let set = this.objects_map.get(set_id);
+				bresult = set.delete(value);
+			}
+			
+			return bresult;
+		}
+		
+		hasSetItem(set_id, value) {
+			
+			var bresult = false;
+			
+			if(this.objects_map.has(set_id)) {
+				let set = this.objects_map.get(set_id);
+				bresult = set.has(value);
+			}
+			
+			return bresult;
+		}
+		
+		getSetItems(set_id) {
+			
+			var tresult = new Array(0);
+			
+			if(this.objects_map.has(set_id)) {
+				let set = this.objects_map.get(set_id);
+				for(const ite of set.values()) {
+					tresult.push(ite);
+				}
+			}
+			
+			return tresult;
+		}
+		
+		getSetSize(set_id) {
+			
+			var nresult = 0;
+			
+			if(this.objects_map.has(set_id)) {
+				let set = this.objects_map.get(set_id);
+				nresult = set.size;
+			}
+			
+			return nresult;
+		}
         
     }
 
