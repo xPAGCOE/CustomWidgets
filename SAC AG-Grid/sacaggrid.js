@@ -1,5 +1,5 @@
 /*!
-	SAC Handsontable.js
+	SAC AG-Grid.js
 */
 
 var getScriptPromisify = (src) => {
@@ -41,7 +41,7 @@ var getScriptPromisify = (src) => {
 			this.hgrid = null;
 			this.data = null;
 			this.columns = null;
-			this.row_ids = null;
+			this.rowids = null;
         }
 		
 		// loadWidget
@@ -195,10 +195,10 @@ var getScriptPromisify = (src) => {
 				
 				src_data = src_data.concat("]");
 					
-				this.row_ids = JSON.parse(src_data);
+				this.rowids = JSON.parse(src_data);
 			}
 			
-			return this.row_ids;
+			return this.rowids;
 		}
 		
 		// Custom events handlers
