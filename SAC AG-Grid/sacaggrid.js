@@ -23,7 +23,7 @@ var getScriptPromisify = (src) => {
     </div>
     `;
 
-    class SACHandsonTable extends HTMLElement{
+    class SACAGGrid extends HTMLElement{
 		
 		
 		
