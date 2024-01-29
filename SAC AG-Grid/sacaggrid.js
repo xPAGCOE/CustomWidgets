@@ -121,7 +121,7 @@ var getScriptPromisify = (src) => {
 			}
 			else {
 				// TODO
-				this.reloadWidget({});
+				//this.reloadWidget({});
 			}
 		}
 		
