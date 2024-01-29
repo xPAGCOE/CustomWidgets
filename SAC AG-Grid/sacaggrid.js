@@ -58,8 +58,7 @@ var getScriptPromisify = (src) => {
 							{ field: 'C' },
 							{ field: 'D' },
 							{ field: 'E' }
-				],
-							
+				],		
 				// default ColDef, gets applied to every column
 				defaultColDef: {
 					// set the default column width
@@ -73,19 +72,19 @@ var getScriptPromisify = (src) => {
 					// disable cell data types
 					cellDataType: false
 				},
-				
 				rowData: [
-							{A:'', B:'', C:'', D:'', E:''},
-							{A:'', B:'', C:'', D:'', E:''},
-							{A:'', B:'', C:'', D:'', E:''},
-							{A:'', B:'', C:'', D:'', E:''},
-							{A:'', B:'', C:'', D:'', E:''},
-							{A:'', B:'', C:'', D:'', E:''},
-							{A:'', B:'', C:'', D:'', E:''},
-							{A:'', B:'', C:'', D:'', E:''},
-							{A:'', B:'', C:'', D:'', E:''},
-							{A:'', B:'', C:'', D:'', E:''}
-				]
+							{id: '1', A:'', B:'', C:'', D:'', E:''},
+							{id: '2', A:'', B:'', C:'', D:'', E:''},
+							{id: '3', A:'', B:'', C:'', D:'', E:''},
+							{id: '4', A:'', B:'', C:'', D:'', E:''},
+							{id: '5', A:'', B:'', C:'', D:'', E:''},
+							{id: '6', A:'', B:'', C:'', D:'', E:''},
+							{id: '7', A:'', B:'', C:'', D:'', E:''},
+							{id: '8', A:'', B:'', C:'', D:'', E:''},
+							{id: '9', A:'', B:'', C:'', D:'', E:''},
+							{id: '10', A:'', B:'', C:'', D:'', E:''}
+				],
+				getRowId: (params) => params.data.id
 			};
 						
 			// Destroy any existing grid instance
