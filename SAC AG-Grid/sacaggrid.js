@@ -19,7 +19,6 @@ var getScriptPromisify = (src) => {
 		overflow: overlay;
     }
 	</style>
-	<script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
     <div id="main_grid" width="100%">
     </div>
     `;
@@ -52,6 +51,15 @@ var getScriptPromisify = (src) => {
 			var grid_elt = this.shadowRoot.getElementById('main_grid');
 			
 			const grid_options = {
+				columnDefs: [
+							// using default ColDef
+							{ field: 'A' },
+							{ field: 'B' },
+							{ field: 'C' },
+							{ field: 'D' },
+							{ field: 'E' }
+				],
+							
 				// default ColDef, gets applied to every column
 				defaultColDef: {
 					// set the default column width
@@ -65,7 +73,19 @@ var getScriptPromisify = (src) => {
 					// disable cell data types
 					cellDataType: false,
 				},
-				rowData: null
+				
+				rowData: [
+							{Id:1, A:'', B:'', C:'', D:'', E:''},
+							{Id:2, A:'', B:'', C:'', D:'', E:''},
+							{Id:3, A:'', B:'', C:'', D:'', E:''},
+							{Id:4, A:'', B:'', C:'', D:'', E:''},
+							{Id:5, A:'', B:'', C:'', D:'', E:''},
+							{Id:6, A:'', B:'', C:'', D:'', E:''},
+							{Id:7, A:'', B:'', C:'', D:'', E:''},
+							{Id:8, A:'', B:'', C:'', D:'', E:''},
+							{Id:9, A:'', B:'', C:'', D:'', E:''},
+							{Id:10, A:'', B:'', C:'', D:'', E:''}
+				]
 			};
 						
 			// Destroy any existing grid instance
