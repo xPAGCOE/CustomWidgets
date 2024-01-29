@@ -63,7 +63,7 @@ var getScriptPromisify = (src) => {
 				// default ColDef, gets applied to every column
 				defaultColDef: {
 					// set the default column width
-					width: 150,
+					//width: 150,
 					// make every column editable
 					editable: true,
 					// make every column use 'text' filter by default
@@ -71,7 +71,7 @@ var getScriptPromisify = (src) => {
 					// enable floating filters by default
 					floatingFilter: true,
 					// disable cell data types
-					cellDataType: false,
+					cellDataType: false
 				},
 				
 				rowData: [
