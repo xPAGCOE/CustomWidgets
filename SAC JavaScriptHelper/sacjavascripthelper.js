@@ -443,12 +443,13 @@ var getScriptPromisify = (src) => {
 				const response = await fetch(url, 
 				{
 					method: "POST",
-					body: JSON.stringify({userId: 1,title: "Fix my bugs",completed: false}),
-					headers: {"Content-type": "application/json; charset=UTF-8"}
+					body: JSON.stringify(body),
+					headers: headers
+					//body: JSON.stringify({userId: 1,title: "Fix my bugs",completed: false}),
+					//headers: {"Content-type": "application/json; charset=UTF-8"}
 				});
 				
 				sresult = response.json();
-				//sresult = response;
 			}
 			catch(e) {
 				sresult = { error: e.name, message: e.message };
