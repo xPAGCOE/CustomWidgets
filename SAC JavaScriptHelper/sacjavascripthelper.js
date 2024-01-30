@@ -435,11 +435,11 @@ var getScriptPromisify = (src) => {
 		}
 		
 		// postHttp method
-		postHttp(url, headers, body) {
+		async postHttp(url, headers, body) {
 			var sresult = {};
 			
 			try {
-				const response = await fetch(url, headers, body);
+				const response = await fetch(url, { method: "POST", headers: JSON.stringify(headers), body: JSON.stringify(body) });
 				
 				sresult = response.json();
 			}
