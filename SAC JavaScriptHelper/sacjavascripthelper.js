@@ -439,10 +439,16 @@ var getScriptPromisify = (src) => {
 			var sresult = {};
 			
 			try {
-				const response = await fetch(url, { method: "POST", headers: headers, body: body });
+				//const response = await fetch(url, { method: "POST", headers: headers, body: body });
+				const response = await fetch(url, 
+				{
+					method: "POST",
+					body: JSON.stringify({userId: 1,title: "Fix my bugs",completed: false}),
+					headers: {"Content-type": "application/json; charset=UTF-8"}
+				});
 				
-				//sresult = response.json();
-				sresult = response;
+				sresult = response.json();
+				//sresult = response;
 			}
 			catch(e) {
 				sresult = { error: e.name, message: e.message };
