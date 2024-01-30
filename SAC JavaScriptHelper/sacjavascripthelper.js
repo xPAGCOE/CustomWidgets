@@ -441,7 +441,8 @@ var getScriptPromisify = (src) => {
 			try {
 				const response = await fetch(url, { method: "POST", headers: headers, body: body });
 				
-				sresult = response.json();
+				//sresult = response.json();
+				sresult = response;
 			}
 			catch(e) {
 				sresult = { error: e.name, message: e.message };
