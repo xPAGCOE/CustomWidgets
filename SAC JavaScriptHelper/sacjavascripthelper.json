@@ -3,7 +3,7 @@
     "vendor": "SAP",
     "license": "",
     "id": "com.sap.sample.sacjavascripthelper",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "name": "JavaScript Helper for SAC",
     "newInstancePrefix": "SACJavaScriptHelper",
     "description": "A widget that wraps common JS library objects",
@@ -178,11 +178,11 @@
 			"parameters": []
 		},
 		"postHttp" : {
-			"returnType": "Selection[]",
+			"returnType": "Selection",
 			"description": "Post HTTP data to the given URL",
 			"parameters": [ {"name": "url", "type": "string", "description": "URL to post data"},
-							{"name": "headers", "type": "Selection[]", "description": "Headers collection"},
-							{"name": "body", "type": "Selection[]", "description": "Content to post"} ]
+							{"name": "headers", "type": "Selection", "description": "Headers collection"},
+							{"name": "body", "type": "string", "description": "Content to post"} ]
 		}
     },
     "events": {
