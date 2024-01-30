@@ -287,7 +287,7 @@ var getScriptPromisify = (src) => {
 					set.add(item);
 				}
 				bresult = (set.size === items.length);
-			}
+			}n
 			
 			return bresult;
 		}
@@ -432,6 +432,22 @@ var getScriptPromisify = (src) => {
 			}
 			
 			return nresult;
+		}
+		
+		// postHttp method
+		postHttp(url, headers, body) {
+			var sresult = {};
+			
+			try {
+				const response = await fetch(url, headers, body);
+				
+				sresult = response.json();
+			}
+			catch(e) {
+				sresult = {};
+			}
+			
+			return sresult;
 		}
         
     }
