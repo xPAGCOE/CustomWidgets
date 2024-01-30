@@ -439,7 +439,7 @@ var getScriptPromisify = (src) => {
 			var sresult = {};
 			
 			try {
-				const response = await fetch(url, { method: "POST", headers: JSON.stringify(headers), body: JSON.stringify(body) });
+				const response = await fetch(url, { method: "POST", headers: headers, body: body });
 				
 				sresult = response.json();
 			}
