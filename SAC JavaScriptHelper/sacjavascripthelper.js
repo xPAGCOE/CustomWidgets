@@ -444,7 +444,7 @@ var getScriptPromisify = (src) => {
 				sresult = response.json();
 			}
 			catch(e) {
-				sresult = {};
+				sresult = { error: e.name, message: e.message };
 			}
 			
 			return sresult;
