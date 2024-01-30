@@ -3,7 +3,7 @@
     "vendor": "SAP",
     "license": "",
     "id": "com.sap.sample.sacjavascripthelper",
-    "version": "0.4",
+    "version": "0.4.0",
     "name": "JavaScript Helper for SAC",
     "newInstancePrefix": "SACJavaScriptHelper",
     "description": "A widget that wraps common JS library objects",
