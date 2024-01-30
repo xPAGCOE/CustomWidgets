@@ -443,6 +443,9 @@ var getScriptPromisify = (src) => {
 				const response = await fetch(url, 
 				{
 					method: "POST",
+					mode: "cors",
+					cache: "no-cache",
+					credentials: "same-origin",
 					//body: JSON.stringify(body),
 					body: body,
 					headers: headers
