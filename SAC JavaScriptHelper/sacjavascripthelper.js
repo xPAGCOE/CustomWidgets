@@ -445,12 +445,8 @@ var getScriptPromisify = (src) => {
 					method: "POST",
 					mode: "cors",
 					cache: "no-cache",
-					credentials: "same-origin",
-					//body: JSON.stringify(body),
 					body: body,
 					headers: headers
-					//body: JSON.stringify({userId: 1,title: "Fix my bugs",completed: false}),
-					//headers: {"Content-type": "application/json; charset=UTF-8"}
 				});
 				
 				sresult = response.json();
