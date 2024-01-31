@@ -42,10 +42,12 @@ var getScriptPromisify = (src) => {
 		
 		// loadWidget
 		async loadWidget() {
-			/* https://danfo.jsdata.org/ */
 			await getScriptPromisify('https://cdn.jsdelivr.net/npm/danfojs@1.1.2/lib/bundle.min.js');
 			
 			var main_container = this.shadowRoot.getElementById('main_container');
+			
+			console.log("loadWidget call");
+			console.log(dfd);
 		}
 		
 		// SAC custom widget events handlers
@@ -70,7 +72,7 @@ var getScriptPromisify = (src) => {
 			console.log(data);
 			console.log(options);
 							
-			this.df = new dfd.DataFrame(data, options);
+			let var_df = new dfd.DataFrame(data, options);
 			
 			return this.df;
 		}
