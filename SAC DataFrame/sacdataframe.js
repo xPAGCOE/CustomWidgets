@@ -49,21 +49,25 @@ var getScriptPromisify = (src) => {
 		
 		// SAC custom widget events handlers
         onCustomWidgetBeforeUpdate(changedProperties) {
-			//console.log("onCustomWidgetBeforeUpdate call");
+			console.log("onCustomWidgetBeforeUpdate call");
 			this._props = { ...this._props, ...changedProperties };
 		}
 
 		onCustomWidgetAfterUpdate(changedProperties) {
-			//console.log("onCustomWidgetAfterUpdate call");
-			//console.log(changedProperties);
+			console.log("onCustomWidgetAfterUpdate call");
+			console.log(changedProperties);
 		}
 		
 		connectedCallback(){
-			//console.log("connectedCallback call");
+			console.log("connectedCallback call");
 		}
 		
 		// Methods
 		newDataFrame(data, options) {
+			
+			console.log("newDataFrame call");
+			console.log(data);
+			console.log(options);
 							
 			this.df = new dfd.DataFrame(data, options);
 			

@@ -27,7 +27,7 @@
 		"df": {
 			"type": "Selection",
 			"description": "Dataframe object",
-			"default": "{}"
+			"default": {}
 		}
     },
     "methods": {
