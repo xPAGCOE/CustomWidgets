@@ -19,6 +19,7 @@ var getScriptPromisify = (src) => {
 		overflow: overlay;
     }
 	</style>
+	<script src="https://cdn.jsdelivr.net/npm/danfojs@1.1.2/lib/bundle.min.js"></script>
     <div id="main_container" hidden>
     </div>
     `;
