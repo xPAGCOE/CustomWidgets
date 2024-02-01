@@ -61,6 +61,8 @@ var getScriptPromisify = (src) => {
 		onCustomWidgetAfterUpdate(changedProperties) {
 			console.log("onCustomWidgetAfterUpdate call");
 			console.log(changedProperties);
+			
+			this.loadWidget();
 		}
 		
 		connectedCallback(){
