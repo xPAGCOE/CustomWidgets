@@ -37,16 +37,18 @@ var getScriptPromisify = (src) => {
             this._props = {};
 			
 			// private attributes
+			this.dfd = null;
 			this.df = {};
         }
 		
 		// loadWidget
 		async loadWidget() {
+			console.log("loadWidget call");
 			await getScriptPromisify('https://cdn.jsdelivr.net/npm/danfojs@1.1.2/lib/bundle.min.js');
 			
 			var main_container = this.shadowRoot.getElementById('main_container');
 			
-			console.log("loadWidget call");
+			this.dfd = dfd;
 			console.log(dfd);
 		}
 		
@@ -71,8 +73,10 @@ var getScriptPromisify = (src) => {
 			console.log("newDataFrame call");
 			console.log(data);
 			console.log(options);
-							
-			let var_df = new dfd.DataFrame(data, options);
+			
+			if(this.dfd != null) {
+				this.df = new this.dfd.DataFrame(data, options);
+			}
 			
 			return this.df;
 		}
