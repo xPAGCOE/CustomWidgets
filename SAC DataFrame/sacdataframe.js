@@ -94,7 +94,7 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = dtaframe.addColumn(column, values, {inplace:inplace});
+				df = dataframe.addColumn(column, values, {inplace:inplace});
 			}
 			
 			return df;
