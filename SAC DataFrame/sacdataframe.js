@@ -92,10 +92,12 @@ var getScriptPromisify = (src) => {
 		
 		addColumn(dataframe, column, values, inplace) {
 			
+			console.log("addColumn call");
 			var df = null;
 			
 			if((dataframe != null) && (this.dfd != null)) {
 				df = new this.dfd.DataFrame(dataframe);
+				console.log(df);
 				df = df.addColumn(column, values, {inplace:inplace});
 			}
 			
