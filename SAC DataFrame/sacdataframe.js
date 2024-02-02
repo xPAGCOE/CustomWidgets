@@ -101,7 +101,7 @@ var getScriptPromisify = (src) => {
 		// column
 		column(dataframe, name) {
 			
-			var col = new Array();
+			var col = null;
 			
 			if(dataframe != null) {
 				
@@ -245,6 +245,24 @@ var getScriptPromisify = (src) => {
 			}
 			
 			return df;
+		}
+		
+		/*** Binary operator functions ***/
+		// Add
+		add(dataframe, other, option) {
+			
+			var df_new = null;
+			
+			if(dataframe != null) {
+				
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df_new = df.add(other, option);
+				}
+			}
+			
+			return df_new;
 		}
 		
 		
