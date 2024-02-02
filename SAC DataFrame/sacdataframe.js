@@ -84,11 +84,11 @@ var getScriptPromisify = (src) => {
 		// index
 		index(dataframe) {
 			
-			var idx = null;
+			var idx = new Array();
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
 					idx = df.index;
@@ -101,11 +101,11 @@ var getScriptPromisify = (src) => {
 		// column
 		column(dataframe, name) {
 			
-			var col = null;
+			var col = new Array();
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
 					col = df.column(name);
@@ -118,11 +118,11 @@ var getScriptPromisify = (src) => {
 		// values
 		values(dataframe) {
 			
-			var values = null;
+			var values = new Array();
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
 					values = df.values;
@@ -139,7 +139,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
 					axis_obj = df.axis;
@@ -156,7 +156,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
 					shape_arr = df.shape;
@@ -169,82 +169,82 @@ var getScriptPromisify = (src) => {
 		/*** Indexing, iteration ***/
 		// head
 		head(dataframe, rows) {
-			var head_df = null;
+			var df = null;
 			
 			if(dataframe != null) {
 				
 				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					head_df = df.head(rows);
+					df = df.head(rows);
 				}
 			}
 			
-			return head_df;
+			return df;
 		}
 		
 		// loc
 		loc(dataframe, args) {
-			var loc_df = null;
+			var df = null;
 			
 			if(dataframe != null) {
 				
 				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					loc_df = df.loc(args);
+					df = df.loc(args);
 				}
 			}
 			
-			return loc_df;
+			return df;
 		}
 		
 		// iloc
 		iloc(dataframe, args) {
-			var iloc_df = null;
+			var df = null;
 			
 			if(dataframe != null) {
 				
 				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					iloc_df = df.iloc(args);
+					df = df.iloc(args);
 				}
 			}
 			
-			return iloc_df;
+			return df;
 		}
 		
 		// tail
 		tail(dataframe, rows) {
-			var tail_df = null;
+			var df = null;
 			
 			if(dataframe != null) {
 				
 				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					tail_df = df.tail(rows);
+					df = df.tail(rows);
 				}
 			}
 			
-			return tail_df;
+			return df;
 		}
 		
 		// query
 		query(dataframe, kwargs) {
-			var query_df = null;
+			var df = null;
 			
 			if(dataframe != null) {
 				
 				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					query_df = df.query(kwargs);
+					df = df.query(kwargs);
 				}
 			}
 			
-			return query_df;
+			return df;
 		}
 		
 		
