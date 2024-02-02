@@ -3,7 +3,7 @@
     "vendor": "SAP",
     "license": "",
     "id": "com.sap.sample.sacdataframe",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "name": "JavaScript DataFrame for SAC",
     "newInstancePrefix": "SACDataFrame",
     "description": "A widget that provides DataFrame-like functions",
@@ -23,11 +23,6 @@
 			"type": "string",
 			"description": "For internal use",
 			"default": ""
-		},
-		"df": {
-			"type": "Selection",
-			"description": "Dataframe object",
-			"default": {}
 		}
     },
     "methods": {
@@ -40,14 +35,16 @@
 		"appendRow": {
 			"returnType": "Selection",
 			"description": "Adds new row to the end of the DataFrame",
-			"parameters": [ {"name": "values", "type": "Selection[]", "description": "Values to append to the DataFrame"},
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "values", "type": "Selection[]", "description": "Values to append to the DataFrame"},
 							{"name": "index", "type": "integer[]", "description": "New index values to append to the Series"},
 							{"name": "inplace", "type": "boolean", "description": "Boolean indicating whether to perform the operation inplace or not, default to false"}]
 		},
 		"addColumn": {
 			"returnType": "Selection",
 			"description": "Add new column to the DataFrame",
-			"parameters": [ {"name": "column", "type": "string", "description": "Name of the column to add"},
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "column", "type": "string", "description": "Name of the column to add"},
 							{"name": "values", "type": "Selection[]", "description": "New values to add"},
 							{"name": "inplace", "type": "boolean", "description": "Boolean indicating whether to perform the operation inplace or not, default to false"}]
 		}

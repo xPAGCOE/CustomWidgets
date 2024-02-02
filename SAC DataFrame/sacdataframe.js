@@ -19,7 +19,6 @@ var getScriptPromisify = (src) => {
 		overflow: overlay;
     }
 	</style>
-	<script src="https://cdn.jsdelivr.net/npm/danfojs@1.1.2/lib/bundle.min.js"></script>
     <div id="main_container" hidden>
     </div>
     `;
@@ -38,63 +37,67 @@ var getScriptPromisify = (src) => {
 			
 			// private attributes
 			this.dfd = null;
-			this.df = {};
         }
 		
 		// loadWidget
 		async loadWidget() {
-			console.log("loadWidget call");
+			//console.log("loadWidget call");
 			await getScriptPromisify('https://cdn.jsdelivr.net/npm/danfojs@1.1.2/lib/bundle.min.js');
 			
 			var main_container = this.shadowRoot.getElementById('main_container');
 			
 			this.dfd = dfd;
-			console.log(dfd);
+			//console.log(dfd);
 		}
 		
 		// SAC custom widget events handlers
         onCustomWidgetBeforeUpdate(changedProperties) {
-			console.log("onCustomWidgetBeforeUpdate call");
+			//console.log("onCustomWidgetBeforeUpdate call");
 			this._props = { ...this._props, ...changedProperties };
 		}
 
 		onCustomWidgetAfterUpdate(changedProperties) {
-			console.log("onCustomWidgetAfterUpdate call");
-			console.log(changedProperties);
-			
+			//console.log("onCustomWidgetAfterUpdate call");
+			//console.log(changedProperties);
 			this.loadWidget();
 		}
 		
 		connectedCallback(){
-			console.log("connectedCallback call");
+			//console.log("connectedCallback call");
 		}
 		
 		// Methods
 		newDataFrame(data, options) {
 			
-			console.log("newDataFrame call");
-			console.log(data);
-			console.log(options);
+			var df = null;
 			
 			if(this.dfd != null) {
-				this.df = new this.dfd.DataFrame(data, options);
+				df = new this.dfd.DataFrame(data, options);
 			}
 			
-			return this.df;
+			return df;
 		}
 		
-		appendRow(values, index, inplace) {
+		appendRow(dataframe, values, index, inplace) {
 			
-			this.df = this.df.append(values, index, {inplace:inplace});
+			var df = null;
 			
-			return this.df;
+			if(dataframe != null) {
+				df = dataframe.append(values, index, {inplace:inplace});
+			}
+			
+			return df;
 		}
 		
-		addColumn(column, values, inplace) {
+		addColumn(dataframe, column, values, inplace) {
 			
-			this.df = this.df.addColumn(column, values, {inplace:inplace});
+			var df = null;
 			
-			return this.df;
+			if(dataframe != null) {
+				df = dtaframe.addColumn(column, values, {inplace:inplace});
+			}
+			
+			return df;
 		}
     }
 
