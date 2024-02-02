@@ -84,7 +84,11 @@ var getScriptPromisify = (src) => {
 			
 			if((dataframe != null) && (this.dfd != null)) {
 				df = new this.dfd.DataFrame(dataframe);
-				df = df.append(values, index, {inplace:inplace});
+				
+				if(df != null) {
+					console.log(df);
+					df = df.append(values, index, {inplace:inplace});
+				}
 			}
 			
 			return df;
@@ -96,9 +100,13 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if((dataframe != null) && (this.dfd != null)) {
+				
 				df = new this.dfd.DataFrame(dataframe);
-				console.log(df);
-				df = df.addColumn(column, values, {inplace:inplace});
+				
+				if(df != null) {
+					console.log(df);
+					df = df.addColumn(column, values, {inplace:inplace});
+				}
 			}
 			
 			return df;
