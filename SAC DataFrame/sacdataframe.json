@@ -32,11 +32,67 @@
 			"parameters": [ {"name": "data", "type": "Selection[]", "description": "JSON data to set"},
 							{"name": "options", "type": "Selection", "description": "JSON options to set"}]
 		},
+		"index": {
+			"returnType": "integer[]",
+			"description": "Returns auto-generated index of a DataFrame",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"} ]
+		},
+		"column": {
+			"returnType": "string[]",
+			"description": "Return the elements of the specified column as a Series",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "column", "type": "string", "description": "Column name"} ]
+		},
+		"values": {
+			"returnType": "string[][]",
+			"description": "Return a JavaScript array representation of the DataFrame",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"} ]
+		},
+		"axis": {
+			"returnType": "Selection",
+			"description": "Return an Object containing the axis of the DataFrame",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"} ]
+		},
+		"shape": {
+			"returnType": "integer[]",
+			"description": "Return an Array representing the dimensionality of the DataFrame",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"} ]
+		},
+		"head": {
+			"returnType": "Selection",
+			"description": "Returns the first n rows of the DataFrame based on position",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "rows", "type": "integer", "description": "Number of rows to return"} ]
+		},
+		"loc": {
+			"returnType": "Selection",
+			"description": "Access a group of rows and columns by label(s)",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "args", "type": "Selection", "description": "{rows: Array of labels Boolean mask of row index, columns: Array of labels of column names}"} ]
+		},
+		"iloc": {
+			"returnType": "Selection",
+			"description": "Purely integer-location based indexing for selection by position",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "args", "type": "Selection", "description": "{rows: Array of index of row position, columns: Array of index of position along columns}"} ]
+		},
+		"tail": {
+			"returnType": "Selection",
+			"description": "Returns the last n rows from the DataFrame based on position",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "rows", "type": "integer", "description": "Number of rows to return"} ]
+		},
+		"query": {
+			"returnType": "Selection",
+			"description": "Query the DataFrame by the result of a logical comparison or boolean mask",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "args", "type": "Selection", "description": "{condition, column, is, to, inplace}"} ]
+		},
 		"appendRow": {
 			"returnType": "Selection",
 			"description": "Adds new row to the end of the DataFrame",
 			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
-							{"name": "values", "type": "Selection[]", "description": "Values to append to the DataFrame"},
+							{"name": "values", "type": "string[]", "description": "Values to append to the DataFrame"},
 							{"name": "index", "type": "integer[]", "description": "New index values to append to the Series"},
 							{"name": "inplace", "type": "boolean", "description": "Boolean indicating whether to perform the operation inplace or not, default to false"}]
 		},
@@ -45,7 +101,7 @@
 			"description": "Add new column to the DataFrame",
 			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
 							{"name": "column", "type": "string", "description": "Name of the column to add"},
-							{"name": "values", "type": "Selection[]", "description": "New values to add"},
+							{"name": "values", "type": "string[]", "description": "New values to add"},
 							{"name": "inplace", "type": "boolean", "description": "Boolean indicating whether to perform the operation inplace or not, default to false"}]
 		}
     },

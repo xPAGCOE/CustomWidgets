@@ -67,6 +67,8 @@ var getScriptPromisify = (src) => {
 		}
 		
 		// Methods
+		
+		// DataFrame creation
 		newDataFrame(data, options) {
 			
 			var df = null;
@@ -78,13 +80,183 @@ var getScriptPromisify = (src) => {
 			return df;
 		}
 		
+		/*** Attributes ***/
+		// index
+		index(dataframe) {
+			
+			var idx = null;
+			
+			if(dataframe != null) {
+				
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					idx = df.index;
+				}
+			}
+			
+			return idx;
+		}
+		
+		// column
+		column(dataframe, name) {
+			
+			var col = null;
+			
+			if(dataframe != null) {
+				
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					col = df.column(name);
+				}
+			}
+			
+			return col;
+		}
+		
+		// values
+		values(dataframe) {
+			
+			var values = null;
+			
+			if(dataframe != null) {
+				
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					values = df.values;
+				}
+			}
+			
+			return values;
+		}
+		
+		// axis
+		axis(dataframe) {
+			
+			var axis_obj = null;
+			
+			if(dataframe != null) {
+				
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					axis_obj = df.axis;
+				}
+			}
+			
+			return axis_obj;
+		}
+		
+		// shape
+		shape(dataframe) {
+			
+			var shape_arr = null;
+			
+			if(dataframe != null) {
+				
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					shape_arr = df.shape;
+				}
+			}
+			
+			return shape_arr;
+		}
+		
+		/*** Indexing, iteration ***/
+		// head
+		head(dataframe, rows) {
+			var head_df = null;
+			
+			if(dataframe != null) {
+				
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					head_df = df.head(rows);
+				}
+			}
+			
+			return head_df;
+		}
+		
+		// loc
+		loc(dataframe, args) {
+			var loc_df = null;
+			
+			if(dataframe != null) {
+				
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					loc_df = df.loc(args);
+				}
+			}
+			
+			return loc_df;
+		}
+		
+		// iloc
+		iloc(dataframe, args) {
+			var iloc_df = null;
+			
+			if(dataframe != null) {
+				
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					iloc_df = df.iloc(args);
+				}
+			}
+			
+			return iloc_df;
+		}
+		
+		// tail
+		tail(dataframe, rows) {
+			var tail_df = null;
+			
+			if(dataframe != null) {
+				
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					tail_df = df.tail(rows);
+				}
+			}
+			
+			return tail_df;
+		}
+		
+		// query
+		query(dataframe, kwargs) {
+			var query_df = null;
+			
+			if(dataframe != null) {
+				
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					query_df = df.query(kwargs);
+				}
+			}
+			
+			return query_df;
+		}
+		
+		
+		/*** Combining / comparing / joining / merging ***/
+		// Append a row
 		appendRow(dataframe, values, index, inplace) {
 			
 			var df = null;
 			
-			if((dataframe != null) && (this.dfd != null)) {
+			if(dataframe != null) {
 				
-				df = new this.dfd.DataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
 					df = df.append(values, index, {inplace:inplace});
@@ -94,17 +266,17 @@ var getScriptPromisify = (src) => {
 			return df;
 		}
 		
+		
+		// Add a new column of values
 		addColumn(dataframe, column, values, inplace) {
 			
-			console.log("addColumn call");
 			var df = null;
 			
-			if((dataframe != null) && (this.dfd != null)) {
+			if(dataframe != null) {
 				
-				df = new this.dfd.DataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					console.log(df);
 					df = df.addColumn(column, values, {inplace:inplace});
 				}
 			}
