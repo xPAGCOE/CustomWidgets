@@ -248,7 +248,7 @@ var getScriptPromisify = (src) => {
 		
 		/*** Binary operator functions ***/
 		// Add
-		addDataFrame(dataframe, other, option) {
+		addDataFrame(dataframe, other) {
 			
 			var df_new = null;
 			
@@ -258,7 +258,7 @@ var getScriptPromisify = (src) => {
 				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
 				
 				if(df != null) {
-					df_new = df.add(df_oth, option);
+					df_new = df.add(df_oth);
 				}
 			}
 			
