@@ -572,10 +572,14 @@ var getScriptPromisify = (src) => {
 					
 					// select demanded columns
 					var sub_df = df.loc({columns: src_columns});
+					console.log("After loc");
+					console.log(sub_df);
 					
 					switch(operator) {
 						case "+":
-							sub_df = this.cumSum(sub_df, 1, true);
+							sub_df = sub_df.cumSum({axis: 1});
+							console.log("After cumSum");
+							console.log(sub_df);
 							df = df.addColumn(column, sub_df.values, {inplace:inplace});
 							break;
 						case "-":
