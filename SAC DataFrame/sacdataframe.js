@@ -281,7 +281,7 @@ var getScriptPromisify = (src) => {
 			return df_new;
 		}
 		
-		addValues(dataframe, values, option) {
+		addValues(dataframe, values, axis, inplace) {
 			
 			var df_new = null;
 			
@@ -291,7 +291,7 @@ var getScriptPromisify = (src) => {
 				var sf_values = new this.dfd.Series(values);
 				
 				if(df != null) {
-					df_new = df.add(sf_values, option);
+					df_new = df.add(sf_values, {axis: axis, inplace: inplace});
 				}
 			}
 			

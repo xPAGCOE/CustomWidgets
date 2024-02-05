@@ -3,7 +3,7 @@
     "vendor": "SAP",
     "license": "",
     "id": "com.sap.sample.sacdataframe",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "name": "JavaScript DataFrame for SAC",
     "newInstancePrefix": "SACDataFrame",
     "description": "A widget that provides DataFrame-like functions",
@@ -105,7 +105,8 @@
 			"description": "Get Addition of array values element-wise (binary operator add)",
 			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
 							{"name": "values", "type": "number[]", "description": "Values to add with"},
-							{"name": "option", "type": "Selection", "description": "{axis: 0 for row, 1 for column, inplace: Boolean indicating whether to perform the operation inplace or not. Defaults to false}"} ]
+							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"},
+							{"name": "inplace", "type": "boolean", "description": "Perform the operation inplace or not"} ]
 		},
 		"appendRow": {
 			"returnType": "Selection",
