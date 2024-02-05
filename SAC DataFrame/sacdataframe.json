@@ -3,7 +3,7 @@
     "vendor": "SAP",
     "license": "",
     "id": "com.sap.sample.sacdataframe",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "name": "JavaScript DataFrame for SAC",
     "newInstancePrefix": "SACDataFrame",
     "description": "A widget that provides DataFrame-like functions",
@@ -216,6 +216,12 @@
 							{"name": "column", "type": "string", "description": "Name of the column to add"},
 							{"name": "src_columns", "type": "string[]", "description": "Source columns for the new one"},
 							{"name": "operator", "type": "string", "description": "Operation to perform: +, -, x, /"} ]
+		},
+		"concat": {
+			"returnType": "Selection",
+			"description": "Concatenate DataFrames along an axis",
+			"parameters": [ {"name": "dataframes", "type": "Selection[]", "description": "Array of DafaFrames to concatenate"},
+							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"} ]
 		}
     },
     "events": {
