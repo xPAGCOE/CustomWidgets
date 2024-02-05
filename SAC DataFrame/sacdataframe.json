@@ -108,6 +108,72 @@
 							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"},
 							{"name": "inplace", "type": "boolean", "description": "Perform the operation inplace or not"} ]
 		},
+		"subDataFrame": {
+			"returnType": "Selection",
+			"description": "Subtraction of DataFrame from another DataFrame",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "other", "type": "Selection", "description": "DataFrame to subtract"} ]
+		},
+		"subValue": {
+			"returnType": "Selection",
+			"description": "Subtraction of scalar from DataFrame along default axis 1",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "value", "type": "number", "description": "Value to subtract"} ]
+		},
+		"subValues": {
+			"returnType": "Selection",
+			"description": "Subtraction of Array from DataFrame",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "values", "type": "number[]", "description": "Values to subtract"},
+							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"},
+							{"name": "inplace", "type": "boolean", "description": "Perform the operation inplace or not"} ]
+		},
+		"mulDataFrame": {
+			"returnType": "Selection",
+			"description": "Multiplication of DataFrame with another DataFrame",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "other", "type": "Selection", "description": "DataFrame to multiply"} ]
+		},
+		"mulValue": {
+			"returnType": "Selection",
+			"description": "Multiplication of scalar with DataFrame along default axis 1",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "value", "type": "number", "description": "Value to multiply"} ]
+		},
+		"mulValues": {
+			"returnType": "Selection",
+			"description": "Multiplication of Array from DataFrame",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "values", "type": "number[]", "description": "Values to multiply"},
+							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"},
+							{"name": "inplace", "type": "boolean", "description": "Perform the operation inplace or not"} ]
+		},
+		"divDataFrame": {
+			"returnType": "Selection",
+			"description": "Division of DataFrame by another DataFrame",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "other", "type": "Selection", "description": "DataFrame to divide with"} ]
+		},
+		"divValue": {
+			"returnType": "Selection",
+			"description": "Division with scalar of DataFrame along default axis 1",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "value", "type": "number", "description": "Value to divide with"} ]
+		},
+		"divValues": {
+			"returnType": "Selection",
+			"description": "Division by Array from DataFrame",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "values", "type": "number[]", "description": "Values to divide with"},
+							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"},
+							{"name": "inplace", "type": "boolean", "description": "Perform the operation inplace or not"} ]
+		},
+		"sum": {
+			"returnType": "Selection",
+			"description": "Return the sum of the values for the requested axis",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"} ]
+		},
 		"appendRow": {
 			"returnType": "Selection",
 			"description": "Adds new row to the end of the DataFrame",

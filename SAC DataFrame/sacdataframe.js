@@ -298,6 +298,182 @@ var getScriptPromisify = (src) => {
 			return df_new;
 		}
 		
+		// Sub
+		subDataFrame(dataframe, other) {
+			
+			var df_new = null;
+			
+			if(dataframe != null) {
+				
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
+				
+				if(df != null) {
+					df_new = df.sub(df_oth);
+				}
+			}
+			
+			return df_new;
+		}
+		
+		subValue(dataframe, value) {
+			
+			var df_new = null;
+			
+			if(dataframe != null) {
+				
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df_new = df.sub(value);
+				}
+			}
+			
+			return df_new;
+		}
+		
+		subValues(dataframe, values, axis, inplace) {
+			
+			var df_new = null;
+			
+			if(dataframe != null) {
+				
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var sf_values = new this.dfd.Series(values);
+				
+				if(df != null) {
+					df_new = df.sub(sf_values, {axis: axis, inplace: inplace});
+				}
+			}
+			
+			return df_new;
+		}
+		
+		// Mul
+		MulDataFrame(dataframe, other) {
+			
+			var df_new = null;
+			
+			if(dataframe != null) {
+				
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
+				
+				if(df != null) {
+					df_new = df.mul(df_oth);
+				}
+			}
+			
+			return df_new;
+		}
+		
+		mulValue(dataframe, value) {
+			
+			var df_new = null;
+			
+			if(dataframe != null) {
+				
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df_new = df.mul(value);
+				}
+			}
+			
+			return df_new;
+		}
+		
+		mulValues(dataframe, values, axis, inplace) {
+			
+			var df_new = null;
+			
+			if(dataframe != null) {
+				
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var sf_values = new this.dfd.Series(values);
+				
+				if(df != null) {
+					df_new = df.mul(sf_values, {axis: axis, inplace: inplace});
+				}
+			}
+			
+			return df_new;
+		}
+		
+		// Div
+		MulDataFrame(dataframe, other) {
+			
+			var df_new = null;
+			
+			if(dataframe != null) {
+				
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
+				
+				if(df != null) {
+					df_new = df.div(df_oth);
+				}
+			}
+			
+			return df_new;
+		}
+		
+		divValue(dataframe, value) {
+			
+			var df_new = null;
+			
+			if(dataframe != null) {
+				
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df_new = df.div(value);
+				}
+			}
+			
+			return df_new;
+		}
+		
+		divValues(dataframe, values, axis, inplace) {
+			
+			var df_new = null;
+			
+			if(dataframe != null) {
+				
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var sf_values = new this.dfd.Series(values);
+				
+				if(df != null) {
+					df_new = df.div(sf_values, {axis: axis, inplace: inplace});
+				}
+			}
+			
+			return df_new;
+		}
+		
+		/*** Function application & GroupBy ***/
+		
+		//TODO
+		
+		/*** Computations / descriptive stats ***/
+		// Sum
+		sum(dataframe, axis) {
+			
+			var df_sum = null;
+			
+			if(dataframe != null) {
+				
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df_sum = df.sum({axis: axis});
+				}
+			}
+			
+			return df_sum;
+		}
+		
+		
 		
 		/*** Combining / comparing / joining / merging ***/
 		// Append a row
