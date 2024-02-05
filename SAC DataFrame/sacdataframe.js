@@ -269,9 +269,9 @@ var getScriptPromisify = (src) => {
 			return this.add(dataframe, other, option);
 		}
 		
-		addValue(dataframe, value, option) {
+		addValue(dataframe, value) {
 			
-			return this.add(dataframe, value, option);
+			return this.add(dataframe, value);
 		}
 		
 		addValues(dataframe, values, option) {
