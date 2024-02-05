@@ -248,7 +248,24 @@ var getScriptPromisify = (src) => {
 		
 		/*** Binary operator functions ***/
 		// Add
-		add(dataframe, other, option) {
+		addDataFrame(dataframe, other, option) {
+			
+			var df_new = null;
+			
+			if(dataframe != null) {
+				
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
+				
+				if(df != null) {
+					df_new = df.add(df_oth, option);
+				}
+			}
+			
+			return df_new;
+		}
+		
+		addValue(dataframe, value) {
 			
 			var df_new = null;
 			
@@ -257,26 +274,28 @@ var getScriptPromisify = (src) => {
 				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					df_new = df.add(other, option);
+					df_new = df.add(value);
 				}
 			}
 			
 			return df_new;
 		}
 		
-		addDataFrame(dataframe, other, option) {
-			
-			return this.add(dataframe, other, option);
-		}
-		
-		addValue(dataframe, value) {
-			
-			return this.add(dataframe, value);
-		}
-		
 		addValues(dataframe, values, option) {
 			
-			return this.add(dataframe, values, option);
+			var df_new = null;
+			
+			if(dataframe != null) {
+				
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var sf_values = new this.dfd.Series(values);
+				
+				if(df != null) {
+					df_new = df.add(sf_values, option);
+				}
+			}
+			
+			return df_new;
 		}
 		
 		
