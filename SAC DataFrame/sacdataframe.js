@@ -610,7 +610,7 @@ var getScriptPromisify = (src) => {
 					if(df != null) {
 						df_list.push(df);
 					}
-				}
+				});
 				
 				df = dfd.concat({ dfList: df_list, axis: axis });
 			}
