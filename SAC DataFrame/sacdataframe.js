@@ -575,7 +575,7 @@ var getScriptPromisify = (src) => {
 					
 					switch(operator) {
 						case "+":
-							sub_df = this.cumSum(sub_def, 1, true);
+							sub_df = this.cumSum(sub_df, 1, true);
 							df = df.addColumn(column, sub_df.values, {inplace:inplace});
 							break;
 						case "-":
