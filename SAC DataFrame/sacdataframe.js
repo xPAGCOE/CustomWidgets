@@ -41,13 +41,12 @@ var getScriptPromisify = (src) => {
 		
 		// loadWidget
 		async loadWidget() {
-			console.log("loadWidget call");
+			//console.log("loadWidget call");
 			await getScriptPromisify('https://cdn.jsdelivr.net/npm/danfojs@1.1.2/lib/bundle.min.js');
 			
 			var main_container = this.shadowRoot.getElementById('main_container');
 			
 			this.dfd = dfd;
-			console.log(dfd);
 		}
 		
 		// SAC custom widget events handlers
@@ -263,6 +262,21 @@ var getScriptPromisify = (src) => {
 			}
 			
 			return df_new;
+		}
+		
+		addDataFrame(dataframe, other, option) {
+			
+			return this.add(dataframe, other, option);
+		}
+		
+		addValue(dataframe, value, option) {
+			
+			return this.add(dataframe, value, option);
+		}
+		
+		addValues(dataframe, values, option) {
+			
+			return this.add(dataframe, values, option);
 		}
 		
 		

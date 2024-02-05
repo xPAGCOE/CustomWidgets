@@ -3,7 +3,7 @@
     "vendor": "SAP",
     "license": "",
     "id": "com.sap.sample.sacdataframe",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "name": "JavaScript DataFrame for SAC",
     "newInstancePrefix": "SACDataFrame",
     "description": "A widget that provides DataFrame-like functions",
@@ -88,11 +88,25 @@
 			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
 							{"name": "args", "type": "Selection", "description": "{condition, column, is, to, inplace}"} ]
 		},
-		"add": {
+		"addDataFrame": {
 			"returnType": "Selection",
-			"description": "Get Addition of DataFrame and other, element-wise (binary operator add)",
+			"description": "Get Addition of DataFrame element-wise (binary operator add)",
 			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
-							{"name": "other", "type": "Selection", "description": "Object to add with"},
+							{"name": "other", "type": "Selection", "description": "DataFrame to add with"},
+							{"name": "option", "type": "Selection", "description": "{axis: 0 for row, 1 for column, inplace: Boolean indicating whether to perform the operation inplace or not. Defaults to false}"} ]
+		},
+		"addValue": {
+			"returnType": "Selection",
+			"description": "Get Addition of scalar value element-wise (binary operator add)",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "other", "type": "number", "description": "Value to add with"},
+							{"name": "option", "type": "Selection", "description": "{axis: 0 for row, 1 for column, inplace: Boolean indicating whether to perform the operation inplace or not. Defaults to false}"} ]
+		},
+		"addValues": {
+			"returnType": "Selection",
+			"description": "Get Addition of array values element-wise (binary operator add)",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "other", "type": "number[]", "description": "Values to add with"},
 							{"name": "option", "type": "Selection", "description": "{axis: 0 for row, 1 for column, inplace: Boolean indicating whether to perform the operation inplace or not. Defaults to false}"} ]
 		},
 		"appendRow": {
