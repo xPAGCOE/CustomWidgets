@@ -456,6 +456,40 @@ var getScriptPromisify = (src) => {
 		//TODO
 		
 		/*** Computations / descriptive stats ***/
+		// Max
+		max(dataframe, axis) {
+			
+			var df_max = null;
+			
+			if(dataframe != null) {
+				
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df_max = df.max({axis: axis});
+				}
+			}
+			
+			return df_max;
+		}
+		
+		// Min
+		max(dataframe, axis) {
+			
+			var df_min = null;
+			
+			if(dataframe != null) {
+				
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df_min = df.min({axis: axis});
+				}
+			}
+			
+			return df_min;
+		}
+		
 		// Sum
 		sum(dataframe, axis) {
 			
@@ -473,6 +507,21 @@ var getScriptPromisify = (src) => {
 			return df_sum;
 		}
 		
+		cumSum(dataframe, axis, inplace) {
+			
+			var df_csum = null;
+			
+			if(dataframe != null) {
+				
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df_csum = df.cumSum({axis: axis, inplace: inplace});
+				}
+			}
+			
+			return df_csum;
+		}
 		
 		
 		/*** Combining / comparing / joining / merging ***/
@@ -493,7 +542,6 @@ var getScriptPromisify = (src) => {
 			return df;
 		}
 		
-		
 		// Add a new column of values
 		addColumn(dataframe, column, values, inplace) {
 			
@@ -505,6 +553,43 @@ var getScriptPromisify = (src) => {
 				
 				if(df != null) {
 					df = df.addColumn(column, values, {inplace:inplace});
+				}
+			}
+			
+			return df;
+		}
+							
+		// Add a new column from existing ones
+		addColumnFromExisting(dataframe, column, src_columns, operator) {
+			
+			var df = null;
+			
+			if(dataframe != null) {
+				
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					
+					// select demanded columns
+					var sub_df = df.loc({columns: src_columns});
+					
+					switch(operator) {
+						case "+":
+							sub_df = this.cumSum(sub_def, 1, true);
+							df = df.addColumn(column, sub_df.values, {inplace:inplace});
+							break;
+						case "-":
+						// TODO
+							break;
+						case "x":
+						// TODO
+							break;
+						case "/":
+						// TODO
+							break;
+						default:
+							break;
+					}
 				}
 			}
 			

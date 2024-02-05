@@ -3,7 +3,7 @@
     "vendor": "SAP",
     "license": "",
     "id": "com.sap.sample.sacdataframe",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "name": "JavaScript DataFrame for SAC",
     "newInstancePrefix": "SACDataFrame",
     "description": "A widget that provides DataFrame-like functions",
@@ -168,11 +168,30 @@
 							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"},
 							{"name": "inplace", "type": "boolean", "description": "Perform the operation inplace or not"} ]
 		},
+		"max": {
+			"returnType": "Selection",
+			"description": "Return the maximum of the values for the requested axis",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"} ]
+		},
+		"min": {
+			"returnType": "Selection",
+			"description": "Return the minimum of the values for the requested axis",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"} ]
+		},
 		"sum": {
 			"returnType": "Selection",
 			"description": "Return the sum of the values for the requested axis",
 			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
 							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"} ]
+		},
+		"cumSum": {
+			"returnType": "Selection",
+			"description": "Return cumulative sum over a DataFrame",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"},
+							{"name": "inplace", "type": "boolean", "description": "Perform the operation inplace or not"} ]
 		},
 		"appendRow": {
 			"returnType": "Selection",
@@ -180,7 +199,7 @@
 			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
 							{"name": "values", "type": "string[]", "description": "Values to append to the DataFrame"},
 							{"name": "index", "type": "integer[]", "description": "New index values to append to the Series"},
-							{"name": "inplace", "type": "boolean", "description": "Boolean indicating whether to perform the operation inplace or not, default to false"}]
+							{"name": "inplace", "type": "boolean", "description": "Boolean indicating whether to perform the operation inplace or not, default to false"} ]
 		},
 		"addColumn": {
 			"returnType": "Selection",
@@ -188,7 +207,15 @@
 			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
 							{"name": "column", "type": "string", "description": "Name of the column to add"},
 							{"name": "values", "type": "string[]", "description": "New values to add"},
-							{"name": "inplace", "type": "boolean", "description": "Boolean indicating whether to perform the operation inplace or not, default to false"}]
+							{"name": "inplace", "type": "boolean", "description": "Boolean indicating whether to perform the operation inplace or not, default to false"} ]
+		},
+		"addColumnFromExisting": {
+			"returnType": "Selection",
+			"description": "Add new column to the DataFrame from existing columns",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "column", "type": "string", "description": "Name of the column to add"},
+							{"name": "src_columns", "type": "string[]", "description": "Source columns for the new one"},
+							{"name": "operator", "type": "string", "description": "Operation to perform: +, -, x, /"} ]
 		}
     },
     "events": {
