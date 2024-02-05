@@ -3,7 +3,7 @@
     "vendor": "SAP",
     "license": "",
     "id": "com.sap.sample.sacdataframe",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "name": "JavaScript DataFrame for SAC",
     "newInstancePrefix": "SACDataFrame",
     "description": "A widget that provides DataFrame-like functions",
