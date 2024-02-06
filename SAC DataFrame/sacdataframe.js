@@ -581,10 +581,8 @@ var getScriptPromisify = (src) => {
 							break;
 						case "-":
 							var sub_df1 = sub_df.iloc({columns: [0]});
-							var sub_df2 = sub_df.iloc({columns: ["1:"]}).sum({axis: 1});
-							console.log(sub_df1);
-							console.log(sub_df2);
-							sub_df = sub_df1.sub(sub_df2);
+							var sub_df2 = sub_df.iloc({columns: ["1:"]}).sum({axis: 1}).mul(-1);
+							sub_df = this.dfd.concat({ dfList: [sub_df1, sub_df2], axis: 1 }).sum({axis: 1});
 							console.log(sub_df);
 							df = this.dfd.concat({ dfList: [df, sub_df], axis: 1 });
 							df.rename({ "0": column }, { inplace: true });
