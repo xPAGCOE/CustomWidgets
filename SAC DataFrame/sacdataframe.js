@@ -606,10 +606,7 @@ var getScriptPromisify = (src) => {
 				var df_list = new Array(dataframes.length);
 				
 				for(var ite=0; ite<dataframes.length; ite++) {
-					df = this.newDataFrame(dataframes[ite].$data, {columns: dataframes[ite].$columns});
-					if(df != null) {
-						df_list.push(df);
-					}
+					df_list.push(this.newDataFrame(dataframes[ite].$data, {columns: dataframes[ite].$columns}));
 				}
 				
 				df = this.dfd.concat({ dfList: df_list, axis: axis });
