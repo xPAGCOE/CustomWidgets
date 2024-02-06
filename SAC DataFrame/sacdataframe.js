@@ -576,8 +576,8 @@ var getScriptPromisify = (src) => {
 					switch(operator) {
 						case "+":
 							sub_df = sub_df.sum({axis: 1});
-							sub_df.rename({ "0": column }, { inplace: true });
 							df = this.dfd.concat({ dfList: [df, sub_df], axis: 1 });
+							df.rename({ "0": column }, { inplace: true });
 							break;
 						case "-":
 						// TODO
