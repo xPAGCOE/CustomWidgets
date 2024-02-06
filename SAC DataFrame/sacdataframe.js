@@ -575,8 +575,8 @@ var getScriptPromisify = (src) => {
 					
 					switch(operator) {
 						case "+":
-							sub_df = sub_df.cumSum({axis: 1});
-							df = this.dfd.concat({ dfList: [df, sub_df], axis: 1 });
+							//sub_df = sub_df.sum({axis: 1});
+							df = this.dfd.concat({ dfList: [df, sub_df.sum({axis: 1})], axis: 1 });
 							break;
 						case "-":
 						// TODO
@@ -601,9 +601,6 @@ var getScriptPromisify = (src) => {
 			
 			var df = null;
 			
-			console.log("Dataframes");
-			console.log(dataframes);
-			
 			if(dataframes.length > 0) {
 				
 				var df_list = new Array();
@@ -611,9 +608,6 @@ var getScriptPromisify = (src) => {
 				for(var ite=0; ite<dataframes.length; ite++) {
 					df_list.push(this.newDataFrame(dataframes[ite].$data, {columns: dataframes[ite].$columns}));
 				}
-				
-				console.log("dfList");
-				console.log(df_list);
 				
 				df = this.dfd.concat({ dfList: df_list, axis: axis });
 			}
