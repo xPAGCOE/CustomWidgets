@@ -606,7 +606,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframes.length > 0) {
 				
-				var df_list = new Array(dataframes.length);
+				var df_list = new Array();
 				
 				for(var ite=0; ite<dataframes.length; ite++) {
 					df_list.push(this.newDataFrame(dataframes[ite].$data, {columns: dataframes[ite].$columns}));
