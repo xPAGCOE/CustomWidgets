@@ -604,13 +604,16 @@ var getScriptPromisify = (src) => {
 			console.log("Dataframes");
 			console.log(dataframes);
 			
-			if(dataframes.length != 0) {
+			if(dataframes.length > 0) {
 				
 				var df_list = new Array(dataframes.length);
 				
 				for(var ite=0; ite<dataframes.length; ite++) {
 					df_list.push(this.newDataFrame(dataframes[ite].$data, {columns: dataframes[ite].$columns}));
 				}
+				
+				console.log("dfList");
+				console.log(df_list);
 				
 				df = this.dfd.concat({ dfList: df_list, axis: axis });
 			}
