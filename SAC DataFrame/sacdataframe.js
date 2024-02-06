@@ -567,15 +567,21 @@ var getScriptPromisify = (src) => {
 			if(dataframe != null) {
 				
 				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				console.log("Right df");
+				console.log(df);
 				
 				if(df != null) {
 					
 					// select demanded columns
 					var sub_df = df.loc({columns: src_columns});
+					console.log("Loc df");
+					console.log(sub_df);
 					
 					switch(operator) {
 						case "+":
 							sub_df = sub_df.cumSum({axis: 1});
+							console.log("Left df");
+							console.log(sub_df);
 							df = this.dfd.concat({ dfList: [df, sub_df], axis: 1 });
 							break;
 						case "-":
