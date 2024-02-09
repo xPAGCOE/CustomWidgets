@@ -628,6 +628,25 @@ var getScriptPromisify = (src) => {
 			
 			return df;
 		}
+		
+		// Merge
+		merge(dataframe_1, dataframe_2, on_columns, merging_mode) {
+			
+			var df1 = null;
+			var df2 = null;
+			var df = null;
+			
+			if((dataframe_1 != null) && (dataframe_2 != null)) {
+				
+				df1 = this.newDataFrame(dataframe_1.$data, {columns: dataframe_1.$columns});
+				df2 = this.newDataFrame(dataframe_2.$data, {columns: dataframe_2.$columns});
+				
+				df = this.dfd.merge({ left: df1, right: df2, on: on_columns, how: merging_mode});
+				
+			}
+			
+			return df;
+		}
     }
 
     window.customElements.define('com-sap-sample-sacdataframe', SACDataFrame);

@@ -3,7 +3,7 @@
     "vendor": "SAP",
     "license": "",
     "id": "com.sap.sample.sacdataframe",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "name": "JavaScript DataFrame for SAC",
     "newInstancePrefix": "SACDataFrame",
     "description": "A widget that provides DataFrame-like functions",
@@ -222,6 +222,14 @@
 			"description": "Concatenate DataFrames along an axis",
 			"parameters": [ {"name": "dataframes", "type": "Selection[]", "description": "Array of DafaFrames to concatenate"},
 							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"} ]
+		},
+		"merge": {
+			"returnType": "Selection",
+			"description": "Merge DataFrame with a database-style join done on columns or indexes",
+			"parameters": [ {"name": "dataframe_1", "type": "Selection", "description": "First DataFrame"},
+							{"name": "dataframe_2", "type": "Selection", "description": "Second DataFrame"},
+							{"name": "on_columns", "type": "string[]", "description": "Column names to join on. Must be found in both the left and right DataFrame"},
+							{"name": "merging_mode", "type": "string", "description": "Merging mode as 'left','right','outer', 'inner' with defaults to 'inner'"} ]
 		}
     },
     "events": {
