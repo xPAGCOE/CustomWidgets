@@ -572,6 +572,9 @@ var getScriptPromisify = (src) => {
 					
 					// select demanded columns
 					var sub_df = df.loc({columns: src_columns});
+					var sub_df1 = sub_df.iloc({columns: [0]});
+					var sub_df2 = sub_df.iloc({columns: ["1:"]});
+					var ite = 0;
 					
 					switch(operator) {
 						case "+":
@@ -580,30 +583,22 @@ var getScriptPromisify = (src) => {
 							df.rename({ "0": column }, { inplace: true });
 							break;
 						case "-":
-							let sub_df1 = sub_df.iloc({columns: [0]});
-							let sub_df2 = sub_df.iloc({columns: ["1:"]}).sum({axis: 1}).mul(-1);
+							sub_df2 = sub_df2.sum({axis: 1}).mul(-1);
 							sub_df = this.dfd.concat({ dfList: [sub_df1, sub_df2], axis: 1 }).sum({axis: 1});
 							df = this.dfd.concat({ dfList: [df, sub_df], axis: 1 });
 							df.rename({ "0": column }, { inplace: true });
 							break;
 						case "x":
-							let sub_df1 = sub_df.iloc({columns: [0]});
-							let sub_df2 = sub_df.iloc({columns: ["1:"]});
-							
-							for(var ite=0; ite<sub_df2.$columns.length; ite++) {
+							for(ite=0; ite<sub_df2.$columns.length; ite++) {
 								sub_df1 = sub_df1.mul(sub_df2.iloc({columns: [ite]}));
 							}
-							
 							df = this.dfd.concat({ dfList: [df, sub_df1], axis: 1 });
 							break;
 						case "/":
-							/*
-							let sub_df1 = sub_df.iloc({columns: [0]});
-							for(var ite=1; ite<sub_dfl.$columns.length; ite++) {
-								sub_df1 = sub_df1.div(sub_df.iloc({columns: [ite]}));
+							for(ite=0; ite<sub_df2.$columns.length; ite++) {
+								sub_df1 = sub_df1.sub(sub_df2.iloc({columns: [ite]}));
 							}
 							df = this.dfd.concat({ dfList: [df, sub_df1], axis: 1 });
-							*/
 							break;
 						default:
 							throw new Error("Operator '" + operator + "' is not recognized for column operation");
