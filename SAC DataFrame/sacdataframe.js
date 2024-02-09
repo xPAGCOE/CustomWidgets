@@ -587,18 +587,22 @@ var getScriptPromisify = (src) => {
 							df.rename({ "0": column }, { inplace: true });
 							break;
 						case "x":
+							/*
 							let sub_df1 = sub_df.iloc({columns: [0]});
 							for(var ite=1; ite<sub_dfl.$columns.length; ite++) {
 								sub_df1 = sub_df1.mul(sub_df.iloc({columns: [ite]}));
 							}
 							df = this.dfd.concat({ dfList: [df, sub_df1], axis: 1 });
+							*/
 							break;
 						case "/":
+							/*
 							let sub_df1 = sub_df.iloc({columns: [0]});
 							for(var ite=1; ite<sub_dfl.$columns.length; ite++) {
 								sub_df1 = sub_df1.div(sub_df.iloc({columns: [ite]}));
 							}
 							df = this.dfd.concat({ dfList: [df, sub_df1], axis: 1 });
+							*/
 							break;
 						default:
 							throw new Error("Operator '" + operator + "' is not recognized for column operation");
