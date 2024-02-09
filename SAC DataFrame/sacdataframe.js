@@ -176,7 +176,7 @@ var getScriptPromisify = (src) => {
 				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					if(inplace) {
+					if(inplace == true) {
 						df.drop({ columns: columns, inplace: inplace });
 					} 
 					else {
@@ -245,9 +245,9 @@ var getScriptPromisify = (src) => {
 				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					if(inplace) {
+					if(inplace == true) {
 						df.rename({ mapper: mapper, {axis: axis, inplace: inplace} });
-					} 
+					}
 					else {
 						df = df.rename({ mapper: mapper, {axis: axis, inplace: inplace} });
 					}
@@ -326,19 +326,24 @@ var getScriptPromisify = (src) => {
 		
 		addValues(dataframe, values, axis, inplace) {
 			
-			var df_new = null;
+			var df = null;
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				var sf_values = new this.dfd.Series(values);
 				
 				if(df != null) {
-					df_new = df.add(sf_values, {axis: axis, inplace: inplace});
+					if(inplace == true) {
+						df.add(sf_values, {axis: axis, inplace: inplace});
+					}
+					else {
+						df = df.add(sf_values, {axis: axis, inplace: inplace});
+					}
 				}
 			}
 			
-			return df_new;
+			return df;
 		}
 		
 		// Sub
@@ -377,19 +382,24 @@ var getScriptPromisify = (src) => {
 		
 		subValues(dataframe, values, axis, inplace) {
 			
-			var df_new = null;
+			var df = null;
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				var sf_values = new this.dfd.Series(values);
 				
 				if(df != null) {
-					df_new = df.sub(sf_values, {axis: axis, inplace: inplace});
+					if(inplace == true) {
+						df.sub(sf_values, {axis: axis, inplace: inplace});
+					}
+					else {
+						df = df.sub(sf_values, {axis: axis, inplace: inplace});
+					}
 				}
 			}
 			
-			return df_new;
+			return df;
 		}
 		
 		// mul
@@ -428,19 +438,24 @@ var getScriptPromisify = (src) => {
 		
 		mulValues(dataframe, values, axis, inplace) {
 			
-			var df_new = null;
+			var df = null;
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				var sf_values = new this.dfd.Series(values);
 				
 				if(df != null) {
-					df_new = df.mul(sf_values, {axis: axis, inplace: inplace});
+					if(inplace == true) {
+						df.mul(sf_values, {axis: axis, inplace: inplace});
+					}
+					else {
+						df = df.mul(sf_values, {axis: axis, inplace: inplace});
+					}
 				}
 			}
 			
-			return df_new;
+			return df;
 		}
 		
 		// Div
@@ -479,19 +494,24 @@ var getScriptPromisify = (src) => {
 		
 		divValues(dataframe, values, axis, inplace) {
 			
-			var df_new = null;
+			var df = null;
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				var sf_values = new this.dfd.Series(values);
 				
 				if(df != null) {
-					df_new = df.div(sf_values, {axis: axis, inplace: inplace});
+					if(inplace == true) {
+						df.div(sf_values, {axis: axis, inplace: inplace});
+					}
+					else {
+						df = df.div(sf_values, {axis: axis, inplace: inplace});
+					}
 				}
 			}
 			
-			return df_new;
+			return df;
 		}
 		
 		/*** Function application & GroupBy ***/
@@ -552,18 +572,23 @@ var getScriptPromisify = (src) => {
 		 // cumSum
 		cumSum(dataframe, axis, inplace) {
 			
-			var df_csum = null;
+			var df = null;
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					df_csum = df.cumSum({axis: axis, inplace: inplace});
+					if(inplace == true) {
+						df.cumSum({axis: axis, inplace: inplace});
+					}
+					else {
+						df = df.cumSum({axis: axis, inplace: inplace});
+					}
 				}
 			}
 			
-			return df_csum;
+			return df;
 		}
 		
 		// mean
@@ -594,7 +619,7 @@ var getScriptPromisify = (src) => {
 				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					if(inplace) {
+					if(inplace == true) {
 						df.dropNa({ axis: axis, inplace: inplace });
 					}
 					else {
@@ -616,7 +641,7 @@ var getScriptPromisify = (src) => {
 				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					if(inplace) {
+					if(inplace == true) {
 						df.fillNa(values, { columns: columns, inplace: inplace });
 					}
 					else {
@@ -667,7 +692,7 @@ var getScriptPromisify = (src) => {
 				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					if(inplace) {
+					if(inplace == true) {
 						df.replace(old_value, new_value, { columns: columns, inplace: inplace });
 					}
 					else {
@@ -703,7 +728,7 @@ var getScriptPromisify = (src) => {
 				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					if(inplace) {
+					if(inplace == true) {
 						df.sortValues(column, { ascending: ascending, inplace: inplace });
 					}
 					else {
@@ -744,7 +769,12 @@ var getScriptPromisify = (src) => {
 				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					df = df.append(values, index, {inplace:inplace});
+					if (inplace == true) {
+						df.append(values, index, {inplace:inplace});
+					}
+					else {
+						df = df.append(values, index, {inplace:inplace});
+					}
 				}
 			}
 			
@@ -761,7 +791,12 @@ var getScriptPromisify = (src) => {
 				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					df = df.addColumn(column, values, {inplace:inplace});
+					if (inplace == true) {
+						df.addColumn(column, values, {inplace:inplace});
+					}
+					else {
+						df = df.addColumn(column, values, {inplace:inplace});
+					}
 				}
 			}
 			
