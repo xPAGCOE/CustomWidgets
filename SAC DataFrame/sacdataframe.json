@@ -3,7 +3,7 @@
     "vendor": "SAP",
     "license": "",
     "id": "com.sap.sample.sacdataframe",
-    "version": "0.0.9",
+    "version": "0.9.0",
     "name": "JavaScript DataFrame for SAC",
     "newInstancePrefix": "SACDataFrame",
     "description": "A widget that provides DataFrame-like functions",
@@ -58,6 +58,13 @@
 			"description": "Return an Array representing the dimensionality of the DataFrame",
 			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"} ]
 		},
+		"drop": {
+			"returnType": "Selection",
+			"description": "Returns the first n rows of the DataFrame based on position",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "columns", "type": "string[]", "description": "Array of column names to drop"},
+							{"name": "inplace", "type": "boolean", "description": "Perform the operation inplace or not"} ]
+		},
 		"head": {
 			"returnType": "Selection",
 			"description": "Returns the first n rows of the DataFrame based on position",
@@ -75,6 +82,14 @@
 			"description": "Purely integer-location based indexing for selection by position",
 			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
 							{"name": "args", "type": "Selection", "description": "{rows: Array of index of row position, columns: Array of index of position along columns}"} ]
+		},
+		"rename": {
+			"returnType": "Selection",
+			"description": "Change axis labels",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "mapper", "type": "Selection", "description": "Labels and transformations to apply to that axis’ values"},
+							{"name": "axis", "type": "integer", "description": "row=0, columns=1"},
+							{"name": "inplace", "type": "boolean", "description": "Perform the operation inplace or not"} ]
 		},
 		"tail": {
 			"returnType": "Selection",
@@ -192,6 +207,89 @@
 			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
 							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"},
 							{"name": "inplace", "type": "boolean", "description": "Perform the operation inplace or not"} ]
+		},
+		"mean": {
+			"returnType": "Selection",
+			"description": "Return the mean of the values for the requested axis",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"} ]
+		},
+		"dropNa": {
+			"returnType": "Selection",
+			"description": "Remove missing values (NaNs, undefined, null) for the DataFrame",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"},
+							{"name": "inplace", "type": "boolean", "description": "Perform the operation inplace or not"} ]
+		},
+		"fillNaWithStringValues": {
+			"returnType": "Selection",
+			"description": "Fill NaN/undefined values from columns with a list of strings",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "columns", "type": "string[]", "description": "Columns to fill"},
+							{"name": "values", "type": "string[]", "description": "Values to fill with"},
+							{"name": "inplace", "type": "boolean", "description": "Perform the operation inplace or not"} ]
+		},
+		"fillNaWithNumberValues": {
+			"returnType": "Selection",
+			"description": "Fill NaN/undefined values from columns with a list of numbers",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "columns", "type": "string[]", "description": "Columns to fill"},
+							{"name": "values", "type": "number[]", "description": "Values to fill with"},
+							{"name": "inplace", "type": "boolean", "description": "Perform the operation inplace or not"} ]
+		},
+		"fillNaWithBooleanValues": {
+			"returnType": "Selection",
+			"description": "Fill NaN/undefined values from columns with a list of booleans",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "columns", "type": "string[]", "description": "Columns to fill"},
+							{"name": "values", "type": "boolean[]", "description": "Values to fill with"},
+							{"name": "inplace", "type": "boolean", "description": "Perform the operation inplace or not"} ]
+		},
+		"isNa": {
+			"returnType": "Selection",
+			"description": "Return a boolean same-sized object indicating if the values are missing",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "columns", "type": "string[]", "description": "Columns to evaluate"} ]
+		},
+		"replaceNumber": {
+			"returnType": "Selection",
+			"description": "Replaces number values in a DataFrame with specified values",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "old_value", "type": "number", "description": "Number to replace"},
+							{"name": "new_value", "type": "number", "description": "Number to replace with"},
+							{"name": "columns", "type": "string[]", "description": "Columns to replace, all when empty"},
+							{"name": "inplace", "type": "boolean", "description": "Perform the operation inplace or not"} ]
+		},
+		"replaceString": {
+			"returnType": "Selection",
+			"description": "Replaces string values in a DataFrame with specified values",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "old_value", "type": "string", "description": "Number to replace"},
+							{"name": "new_value", "type": "string", "description": "Number to replace with"},
+							{"name": "columns", "type": "string[]", "description": "Columns to replace, all when empty"},
+							{"name": "inplace", "type": "boolean", "description": "Perform the operation inplace or not"} ]
+		},
+		"replaceBoolean": {
+			"returnType": "Selection",
+			"description": "Replaces boolean values in a DataFrame with specified values",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "old_value", "type": "boolean", "description": "Number to replace"},
+							{"name": "new_value", "type": "boolean", "description": "Number to replace with"},
+							{"name": "columns", "type": "string[]", "description": "Columns to replace, all when empty"},
+							{"name": "inplace", "type": "boolean", "description": "Perform the operation inplace or not"} ]
+		},
+		"sortValues": {
+			"returnType": "Selection",
+			"description": "Sort values accross column specified",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "column", "type": "string", "description": "Columns to replace, all when empty"},
+							{"name": "ascending", "type": "boolean", "description": "Sort by ascending order (True) or descending (False)"}
+							{"name": "inplace", "type": "boolean", "description": "Perform the operation inplace or not"} ]
+		},
+		"transpose": {
+			"returnType": "Selection",
+			"description": "Return transposed DataFrame",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"} ]
 		},
 		"appendRow": {
 			"returnType": "Selection",

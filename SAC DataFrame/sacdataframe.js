@@ -166,6 +166,28 @@ var getScriptPromisify = (src) => {
 		}
 		
 		/*** Indexing, iteration ***/
+		
+		// drop
+		drop(dataframe, columns, inplace) {
+			var df = null;
+			
+			if(dataframe != null) {
+				
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					if(inplace) {
+						df.drop({ columns: columns, inplace: inplace });
+					} 
+					else {
+						df = df.drop({ columns: columns, inplace: inplace });
+					}
+				}
+			}
+			
+			return df;
+		}
+		
 		// head
 		head(dataframe, rows) {
 			var df = null;
@@ -208,6 +230,27 @@ var getScriptPromisify = (src) => {
 				
 				if(df != null) {
 					df = df.iloc(args);
+				}
+			}
+			
+			return df;
+		}
+		
+		// rename
+		rename(dataframe, mapper, axis, inplace) {
+			var df = null;
+			
+			if(dataframe != null) {
+				
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					if(inplace) {
+						df.rename({ mapper: mapper, {axis: axis, inplace: inplace} });
+					} 
+					else {
+						df = df.rename({ mapper: mapper, {axis: axis, inplace: inplace} });
+					}
 				}
 			}
 			
@@ -349,8 +392,8 @@ var getScriptPromisify = (src) => {
 			return df_new;
 		}
 		
-		// Mul
-		MulDataFrame(dataframe, other) {
+		// mul
+		mulDataFrame(dataframe, other) {
 			
 			var df_new = null;
 			
@@ -401,7 +444,7 @@ var getScriptPromisify = (src) => {
 		}
 		
 		// Div
-		MulDataFrame(dataframe, other) {
+		divDataFrame(dataframe, other) {
 			
 			var df_new = null;
 			
@@ -506,7 +549,7 @@ var getScriptPromisify = (src) => {
 			
 			return df_sum;
 		}
-		
+		 // cumSum
 		cumSum(dataframe, axis, inplace) {
 			
 			var df_csum = null;
@@ -521,6 +564,172 @@ var getScriptPromisify = (src) => {
 			}
 			
 			return df_csum;
+		}
+		
+		// mean
+		mean(dataframe, axis) {
+			
+			var df_mean = null;
+			
+			if(dataframe != null) {
+				
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df_mean = df.mean({axis: axis});
+				}
+			}
+			
+			return df_mean;
+		}
+		
+		/*** Missing data handling ***/
+		// dropNa
+		dropNa(dataframe, axis, inplace) {
+			
+			var df = null;
+			
+			if(dataframe != null) {
+				
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					if(inplace) {
+						df.dropNa({ axis: axis, inplace: inplace });
+					}
+					else {
+						df = df.dropNa({ axis: axis, inplace: inplace });
+					}
+				}
+			}
+			
+			return df;
+		}
+		
+		// fillNa
+		fillNa(dataframe, columns, values, inplace) {
+			
+			var df = null;
+			
+			if(dataframe != null) {
+				
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					if(inplace) {
+						df.fillNa(values, { columns: columns, inplace: inplace });
+					}
+					else {
+						df = df.fillNa(values, { columns: columns, inplace: inplace });
+					}
+				}
+			}
+			
+			return df;
+		}
+		
+		fillNaWithStringValues(dataframe, columns, values, inplace) {
+			return this.fillNa(dataframe, columns, values, inplace);
+		}
+		
+		fillNaWithNumberValues(dataframe, columns, values, inplace) {
+			return this.fillNa(dataframe, columns, values, inplace);
+		}
+		
+		fillNaWithBooleanValues(dataframe, columns, values, inplace) {
+			return this.fillNa(dataframe, columns, values, inplace);
+		}
+		
+		// isNa
+		isNa(dataframe, columns) {
+			
+			var df = null;
+			
+			if(dataframe != null) {
+				
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df = df.isNa({ columns: columns });
+				}
+			}
+			
+			return df;
+		}
+		
+		// Replace
+		replace(dataframe, old_value, new_value, columns, inplace) {
+			
+			var df = null;
+			
+			if(dataframe != null) {
+				
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					if(inplace) {
+						df.replace(old_value, new_value, { columns: columns, inplace: inplace });
+					}
+					else {
+						df = df.replace(old_value, new_value, { columns: columns, inplace: inplace });
+					}
+				}
+			}
+			
+			return df;
+		}
+		
+		replaceNumber(dataframe, old_value, new_value, columns, inplace) {	
+			return this.replace(dataframe, old_value, new_value, columns, inplace);
+		}
+		
+		replaceString(dataframe, old_value, new_value, columns, inplace) {	
+			return this.replace(dataframe, old_value, new_value, columns, inplace);
+		}
+		
+		replaceBoolean(dataframe, old_value, new_value, columns, inplace) {	
+			return this.replace(dataframe, old_value, new_value, columns, inplace);
+		}
+		
+		
+		/*** Sorting & transposing ***/
+		// sortValues
+		sortValues(dataframe, column, ascending, inplace) {
+			
+			var df = null;
+			
+			if(dataframe != null) {
+				
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					if(inplace) {
+						df.sortValues(column, { ascending: ascending, inplace: inplace });
+					}
+					else {
+						df = df.sortValues(column, { ascending: ascending, inplace: inplace });
+					}
+				}
+			}
+			
+			return df;
+		}
+		
+		// transpose
+		transpose(dataframe) {
+			
+			var df = null;
+			
+			if(dataframe != null) {
+				
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df = df.T;
+				}
+			}
+			
+			return df;
 		}
 		
 		
