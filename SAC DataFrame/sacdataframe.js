@@ -246,10 +246,10 @@ var getScriptPromisify = (src) => {
 				
 				if(df != null) {
 					if(inplace == true) {
-						df.rename({ mapper: mapper, {axis: axis, inplace: inplace} });
+						df.rename({mapper: mapper}, {axis: axis, inplace: inplace});
 					}
 					else {
-						df = df.rename({ mapper: mapper, {axis: axis, inplace: inplace} });
+						df = df.rename({mapper: mapper}, {axis: axis, inplace: inplace});
 					}
 				}
 			}
