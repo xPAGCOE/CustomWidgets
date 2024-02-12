@@ -731,18 +731,18 @@ var getScriptPromisify = (src) => {
 				
 				if(df != null) {
 					
-					var df_cmp = new Array();
+					var mat_cmp = new Array();
 					
 					for(var i=0; i<df.shape[0]; i++) {
 						
-						df_cmp[i] = new Array();
+						mat_cmp[i] = new Array();
 						
 						for(var j=0; j<df.shape[1]; j++) {
-							df_cmp[i][j] = Boolean(df.iat(i, j) != value);
+							mat_cmp[i][j] = Boolean(df.iat(i, j) != value);
 						}	
 					}
 					
-					df = this.newDataFrame(df_cmp, {columns: dataframe.$columns});
+					df = df.query(this.newDataFrame(mat_cmp, {columns: dataframe.$columns}));
 				}
 			}
 			
@@ -802,18 +802,18 @@ var getScriptPromisify = (src) => {
 				
 				if(df != null) {
 					
-					var df_cmp = new Array();
+					var mat_cmp = new Array();
 					
 					for(var i=0; i<df.shape[0]; i++) {
 						
-						df_cmp[i] = new Array();
+						mat_cmp[i] = new Array();
 						
 						for(var j=0; j<df.shape[1]; j++) {
-							df_cmp[i][j] = Boolean(df.iat(i, j) == value);
+							mat_cmp[i][j] = Boolean(df.iat(i, j) == value);
 						}	
 					}
 					
-					df = this.newDataFrame(df_cmp, {columns: dataframe.$columns});
+					df = df.query(this.newDataFrame(mat_cmp, {columns: dataframe.$columns}));
 				}
 			}
 			
