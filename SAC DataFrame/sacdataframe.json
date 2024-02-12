@@ -33,6 +33,11 @@
 							{"name": "options", "type": "Selection", "description": "JSON options to set"}, 
 							{"name": "is_series", "type": "boolean", "description": "is series flag (default=false)"} ]
 		},
+		"newInternalDataFrame": {
+			"returnType": "Selection",
+			"description": "Create a new DataFrame from existing object",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "JSON object"} ]
+		},
 		"print": {
 			"description": "Pretty prints default (10) number of rows in a DataFrame to the console",
 			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "DataFrame to print to the console"} ]
