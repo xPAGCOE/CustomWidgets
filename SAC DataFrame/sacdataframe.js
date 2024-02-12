@@ -68,7 +68,7 @@ var getScriptPromisify = (src) => {
 		// Methods
 		
 		// DataFrame creation
-		newDataFrame(data, options, is_series) {
+		newDataFrame(data, options, is_series = false) {
 			
 			var df = null;
 			
@@ -1207,7 +1207,7 @@ var getScriptPromisify = (src) => {
 				var df_list = new Array();
 				
 				for(var ite=0; ite<dataframes.length; ite++) {
-					df_list.push(this.newInternalDataFrame(dataframes[ite]);
+					df_list.push(this.newInternalDataFrame(dataframes[ite]));
 				}
 				
 				df = this.dfd.concat({ dfList: df_list, axis: axis });
