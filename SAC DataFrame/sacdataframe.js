@@ -156,6 +156,8 @@ var getScriptPromisify = (src) => {
 					col = df.column(name);
 					if(col != null) {
 						
+						var col_data = new Array();
+						
 						for(var i=0; i<col.$index.length; i++) {
 							col_data[i] = new Array(1);
 							col_data[i][0] = col.$data[i];
