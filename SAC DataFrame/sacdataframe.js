@@ -289,7 +289,7 @@ var getScriptPromisify = (src) => {
 			if(dataframe != null) {
 				
 				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
-				df_mask = this.newDataFrame(mask.$data, {columns: mask.$columns});
+				var df_mask = this.newDataFrame(mask.$data, {columns: mask.$columns});
 				
 				if((df != null) && (df_mask != null)) {
 					df = df.query(df_mask);
@@ -743,7 +743,7 @@ var getScriptPromisify = (src) => {
 						}	
 					}
 					
-					df = df.query(this.newDataFrame(mat_cmp, {columns: dataframe.$columns, index:  dataframe.$index}));
+					df = this.newDataFrame(mat_cmp, {columns: dataframe.$columns, index:  dataframe.$index});
 				}
 			}
 			
