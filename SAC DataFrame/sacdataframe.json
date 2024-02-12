@@ -105,7 +105,7 @@
 			"returnType": "Selection",
 			"description": "Query the DataFrame by the result of a logical comparison or boolean mask",
 			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
-							{"name": "condition", "type": "Selection", "description": "Boolean condition"} ]
+							{"name": "mask", "type": "Selection", "description": "Boolean mask condition"} ]
 		},
 		"addDataFrame": {
 			"returnType": "Selection",

@@ -283,15 +283,16 @@ var getScriptPromisify = (src) => {
 		}
 		
 		// query
-		query(dataframe, condition) {
+		query(dataframe, mask) {
 			var df = null;
 			
 			if(dataframe != null) {
 				
 				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df_mask = this.newDataFrame(mask.$data, {columns: mask.$columns});
 				
-				if(df != null) {
-					df = df.query(condition);
+				if((df != null) && (df_mask != null)) {
+					df = df.query(df_mask);
 				}
 			}
 			
@@ -727,7 +728,7 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, index:  dataframe.$index});
 				
 				if(df != null) {
 					
@@ -742,7 +743,7 @@ var getScriptPromisify = (src) => {
 						}	
 					}
 					
-					df = df.query(this.newDataFrame(mat_cmp, {columns: dataframe.$columns}));
+					df = df.query(this.newDataFrame(mat_cmp, {columns: dataframe.$columns, index:  dataframe.$index}));
 				}
 			}
 			
@@ -813,10 +814,7 @@ var getScriptPromisify = (src) => {
 						}	
 					}
 					
-					var df_cmp = this.newDataFrame(mat_cmp, {columns: dataframe.$columns, index: dataframe.$index});
-					console.log(df_cmp);
-					
-					df = df.query(df_cmp);
+					df = this.newDataFrame(mat_cmp, {columns: dataframe.$columns, index: dataframe.$index});
 				}
 			}
 			
@@ -861,7 +859,7 @@ var getScriptPromisify = (src) => {
 		}
 		
 		// Min
-		max(dataframe, axis) {
+		min(dataframe, axis) {
 			
 			var df_min = null;
 			
