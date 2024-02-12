@@ -813,7 +813,8 @@ var getScriptPromisify = (src) => {
 						}	
 					}
 					
-					df = df.query(this.newDataFrame(mat_cmp, {columns: dataframe.$columns}));
+					//df = df.query(this.newDataFrame(mat_cmp, {columns: dataframe.$columns}));
+					df = df.query(mat_cmp);
 				}
 			}
 			
