@@ -734,8 +734,8 @@ var getScriptPromisify = (src) => {
 					var df_cmp = new Array();
 					
 					for(var i=0; i<df.shape[0]; i++) {
-						for(var j=0; i<f.shape[1]; j++) {
-							df_cmp[i][j] = (df.iat(i, j) != value);
+						for(var j=0; j<df.shape[1]; j++) {
+							df_cmp[i][j] = Boolean(df.iat(i, j) != value);
 						}	
 					}
 					
