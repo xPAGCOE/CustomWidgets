@@ -74,8 +74,6 @@ var getScriptPromisify = (src) => {
 			
 			if(this.dfd != null) {
 				
-				console.log(options);
-				
 				if(is_series) {
 					var data_arr = new Array();
 					data_arr[0] = data;
@@ -128,6 +126,7 @@ var getScriptPromisify = (src) => {
 		}
 		
 		// column
+		/*
 		column(dataframe, name) {
 			
 			var col = null;
@@ -138,6 +137,32 @@ var getScriptPromisify = (src) => {
 				
 				if(df != null) {
 					col = df.column(name);
+				}
+			}
+			
+			return col;
+		}
+		*/
+		
+		column(dataframe, name) {
+			
+			var col = null;
+			
+			if(dataframe != null) {
+				
+				var df = this.newInternalDataFrame(dataframe);
+				if(df != null) {
+					
+					col = df.column(name);
+					if(col != null) {
+						
+						for(var i=0; i<col.$index.length; i++) {
+							col_data[i] = new Array(1);
+							col_data[i][0] = col.$data[i];
+						}
+						
+						df = this.newDataFrame(col_data, {columns: [name], index: col.$index});
+					}
 				}
 			}
 			
