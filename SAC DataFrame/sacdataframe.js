@@ -68,13 +68,13 @@ var getScriptPromisify = (src) => {
 		// Methods
 		
 		// DataFrame creation
-		newDataFrame(data, options, is_series) {
+		newDataFrame(data, options) {
 			
 			var df = null;
 			
 			if(this.dfd != null) {
 				
-				if(!is_series) {
+				if(!options.is_series) {
 					df = new this.dfd.DataFrame(data, options);
 				}
 				else {
@@ -89,7 +89,7 @@ var getScriptPromisify = (src) => {
 		
 		// print
 		print(dataframe) {
-			var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+			var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 			if(df != null) {
 				df.print();
@@ -104,7 +104,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					idx = df.index;
@@ -121,7 +121,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					col = df.column(name);
@@ -138,7 +138,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					values = df.values;
@@ -155,7 +155,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					axis_obj = df.axis;
@@ -172,7 +172,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					shape_arr = df.shape;
@@ -190,7 +190,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					if(inplace == true) {
@@ -211,7 +211,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					df = df.head(rows);
@@ -227,7 +227,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					df = df.loc(args);
@@ -243,7 +243,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					df = df.iloc(args);
@@ -259,7 +259,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					if(inplace == true) {
@@ -280,7 +280,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					df = df.tail(rows);
@@ -296,8 +296,8 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
-				var df_mask = this.newDataFrame(mask.$data, {columns: mask.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
+				var df_mask = this.newDataFrame(mask.$data, {columns: mask.$columns, is_series: mask.$isSeries});
 				
 				if((df != null) && (df_mask != null)) {
 					df = df.query(df_mask);
@@ -314,8 +314,8 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
-				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
+				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns, is_series: other.$isSeries});
 				
 				if(df != null) {
 					df = df.add(df_oth);
@@ -330,7 +330,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					df = df.add(value);
@@ -345,7 +345,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				var sf_values = new this.dfd.Series(values);
 				
 				if(df != null) {
@@ -367,8 +367,8 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
-				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
+				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns, is_series: other.$isSeries});
 				
 				if(df != null) {
 					df = df.sub(df_oth);
@@ -384,7 +384,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					df = df.sub(value);
@@ -399,7 +399,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				var sf_values = new this.dfd.Series(values);
 				
 				if(df != null) {
@@ -421,8 +421,8 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
-				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
+				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns, is_series: other.$isSeries});
 				
 				if(df != null) {
 					df = df.mul(df_oth);
@@ -437,7 +437,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					df = df.mul(value);
@@ -452,7 +452,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				var sf_values = new this.dfd.Series(values);
 				
 				if(df != null) {
@@ -474,8 +474,8 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
-				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
+				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns, is_series: other.$isSeries});
 				
 				if(df != null) {
 					df = df.div(df_oth);
@@ -490,7 +490,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					df = df.div(value);
@@ -505,7 +505,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				var sf_values = new this.dfd.Series(values);
 				
 				if(df != null) {
@@ -527,8 +527,8 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
-				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
+				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns, is_series: other.$isSeries});
 				
 				if((df != null) && (df_oth != null)) {
 					df = df.lt(df_oth);
@@ -542,7 +542,7 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					df = df.lt(value);
@@ -556,7 +556,7 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				var sf_values = new this.dfd.Series(values);
 				
 				if(df != null) {
@@ -572,8 +572,8 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
-				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
+				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns, is_series: other.$isSeries});
 				
 				if((df != null) && (df_oth != null)) {
 					df = df.gt(df_oth);
@@ -587,7 +587,7 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					df = df.gt(value);
@@ -601,7 +601,7 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				var sf_values = new this.dfd.Series(values);
 				
 				if(df != null) {
@@ -617,8 +617,8 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
-				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
+				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns, is_series: other.$isSeries});
 				
 				if((df != null) && (df_oth != null)) {
 					df = df.le(df_oth);
@@ -632,7 +632,7 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					df = df.le(value);
@@ -646,7 +646,7 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				var sf_values = new this.dfd.Series(values);
 				
 				if(df != null) {
@@ -662,8 +662,8 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
-				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
+				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns, is_series: other.$isSeries});
 				
 				if((df != null) && (df_oth != null)) {
 					df = df.ge(df_oth);
@@ -677,7 +677,7 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					df = df.ge(value);
@@ -691,7 +691,7 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				var sf_values = new this.dfd.Series(values);
 				
 				if(df != null) {
@@ -707,8 +707,8 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
-				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
+				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns, is_series: other.$isSeries});
 				
 				if((df != null) && (df_oth != null)) {
 					df = df.ne(df_oth);
@@ -722,7 +722,7 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					df = df.ne(value);
@@ -736,7 +736,7 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, index:  dataframe.$index});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, index:  dataframe.$index, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					
@@ -751,7 +751,7 @@ var getScriptPromisify = (src) => {
 						}	
 					}
 					
-					df = this.newDataFrame(mat_cmp, {columns: dataframe.$columns, index:  dataframe.$index});
+					df = this.newDataFrame(mat_cmp, {columns: dataframe.$columns, index:  dataframe.$index, is_series: dataframe.$isSeries});
 				}
 			}
 			
@@ -762,7 +762,7 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				var sf_values = new this.dfd.Series(values);
 				
 				if(df != null) {
@@ -778,8 +778,8 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
-				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
+				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns, is_series: other.$isSeries});
 				
 				if((df != null) && (df_oth != null)) {
 					df = df.eq(df_oth);
@@ -793,7 +793,7 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					df = df.eq(value);
@@ -807,7 +807,7 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, index:  dataframe.$index});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, index:  dataframe.$index, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					
@@ -822,7 +822,7 @@ var getScriptPromisify = (src) => {
 						}	
 					}
 					
-					df = this.newDataFrame(mat_cmp, {columns: dataframe.$columns, index: dataframe.$index});
+					df = this.newDataFrame(mat_cmp, {columns: dataframe.$columns, index: dataframe.$index, is_series: dataframe.$isSeries});
 				}
 			}
 			
@@ -833,7 +833,7 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				var sf_values = new this.dfd.Series(values);
 				
 				if(df != null) {
@@ -856,7 +856,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					df_max = df.max({axis: axis});
@@ -873,7 +873,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					df_min = df.min({axis: axis});
@@ -890,7 +890,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					df_sum = df.sum({axis: axis});
@@ -906,7 +906,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					if(inplace == true) {
@@ -928,7 +928,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					df_mean = df.mean({axis: axis});
@@ -946,7 +946,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					if(inplace == true) {
@@ -968,7 +968,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					if(inplace == true) {
@@ -1002,7 +1002,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					df = df.isNa({ columns: columns });
@@ -1019,7 +1019,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					if(inplace == true) {
@@ -1055,7 +1055,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					if(inplace == true) {
@@ -1077,7 +1077,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					df = df.T;
@@ -1096,7 +1096,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					if (inplace == true) {
@@ -1118,7 +1118,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					if (inplace == true) {
@@ -1140,7 +1140,7 @@ var getScriptPromisify = (src) => {
 			
 			if(dataframe != null) {
 				
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, is_series: dataframe.$isSeries});
 				
 				if(df != null) {
 					
@@ -1194,7 +1194,7 @@ var getScriptPromisify = (src) => {
 				var df_list = new Array();
 				
 				for(var ite=0; ite<dataframes.length; ite++) {
-					df_list.push(this.newDataFrame(dataframes[ite].$data, {columns: dataframes[ite].$columns}));
+					df_list.push(this.newDataFrame(dataframes[ite].$data, {columns: dataframes[ite].$columns, is_series: dataframes[ite].$isSeries}));
 				}
 				
 				df = this.dfd.concat({ dfList: df_list, axis: axis });
@@ -1212,8 +1212,8 @@ var getScriptPromisify = (src) => {
 			
 			if((dataframe_1 != null) && (dataframe_2 != null)) {
 				
-				df1 = this.newDataFrame(dataframe_1.$data, {columns: dataframe_1.$columns});
-				df2 = this.newDataFrame(dataframe_2.$data, {columns: dataframe_2.$columns});
+				df1 = this.newDataFrame(dataframe_1.$data, {columns: dataframe_1.$columns, is_series: dataframe_1.$isSeries});
+				df2 = this.newDataFrame(dataframe_2.$data, {columns: dataframe_2.$columns, is_series: dataframe_2.$isSeries});
 				
 				df = this.dfd.merge({ left: df1, right: df2, on: on_columns, how: merging_mode});
 				
