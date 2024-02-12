@@ -3,7 +3,7 @@
     "vendor": "SAP",
     "license": "",
     "id": "com.sap.sample.sacdataframe",
-    "version": "0.9.4",
+    "version": "0.9.5",
     "name": "JavaScript DataFrame for SAC",
     "newInstancePrefix": "SACDataFrame",
     "description": "A widget that provides DataFrame-like functions",
@@ -30,7 +30,8 @@
 			"returnType": "Selection",
 			"description": "Create a new DataFrame with data and specified options",
 			"parameters": [ {"name": "data", "type": "Selection[]", "description": "JSON data to set"},
-							{"name": "options", "type": "Selection", "description": "JSON options to set"} ]
+							{"name": "options", "type": "Selection", "description": "JSON options to set"}, 
+							{"name": "is_series", "type": "boolean", "description": "is series flag (default=false)"} ]
 		},
 		"print": {
 			"description": "Pretty prints default (10) number of rows in a DataFrame to the console",
