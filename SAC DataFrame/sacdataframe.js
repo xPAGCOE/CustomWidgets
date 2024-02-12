@@ -68,12 +68,20 @@ var getScriptPromisify = (src) => {
 		// Methods
 		
 		// DataFrame creation
-		newDataFrame(data, options) {
+		newDataFrame(data, options, is_series) {
 			
 			var df = null;
 			
 			if(this.dfd != null) {
-				df = new this.dfd.DataFrame(data, options);
+				
+				if(!isSeries) {
+					df = new this.dfd.DataFrame(data, options);
+				}
+				else {
+					var data_arr = new Array();
+					data_arr[0] = data;
+					df = new this.dfd.DataFrame(data_arr, options);
+				}
 			}
 			
 			return df;
