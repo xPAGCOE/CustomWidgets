@@ -90,7 +90,7 @@ var getScriptPromisify = (src) => {
 		}
 		
 		// Internal DataFrame creation from existing object
-		newInternalDataframe(dataframe) {
+		newInternalDataFrame(dataframe) {
 			var df = null;
 			
 			if (dataframe != null) {
