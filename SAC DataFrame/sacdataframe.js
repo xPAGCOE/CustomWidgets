@@ -74,7 +74,9 @@ var getScriptPromisify = (src) => {
 			
 			if(this.dfd != null) {
 				
-				if(Boolean(options.is_series)) {
+				console.log(options);
+				
+				if(Boolean(options.is_series) == true) {
 					var data_arr = new Array();
 					data_arr[0] = data;
 					df = new this.dfd.DataFrame(data_arr, options);
