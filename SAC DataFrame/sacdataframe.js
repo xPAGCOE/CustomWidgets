@@ -79,6 +79,15 @@ var getScriptPromisify = (src) => {
 			return df;
 		}
 		
+		// print
+		print(dataframe) {
+			var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+			if(df != null) {
+				df.print();
+			}
+		}
+		
 		/*** Attributes ***/
 		// index
 		index(dataframe) {
@@ -534,20 +543,6 @@ var getScriptPromisify = (src) => {
 			return df;
 		}
 		
-		ltStrValue(dataframe, value) {
-			var df = null;
-			
-			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
-				
-				if(df != null) {
-					df = df.lt(value);
-				}
-			}
-			
-			return df;
-		}
-		
 		ltValues(dataframe, values, axis) {
 			var df = null;
 			
@@ -580,20 +575,6 @@ var getScriptPromisify = (src) => {
 		}
 		
 		gtValue(dataframe, value) {
-			var df = null;
-			
-			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
-				
-				if(df != null) {
-					df = df.gt(value);
-				}
-			}
-			
-			return df;
-		}
-		
-		gtStrValue(dataframe, value) {
 			var df = null;
 			
 			if(dataframe != null) {
@@ -652,20 +633,6 @@ var getScriptPromisify = (src) => {
 			return df;
 		}
 		
-		leStrValue(dataframe, value) {
-			var df = null;
-			
-			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
-				
-				if(df != null) {
-					df = df.le(value);
-				}
-			}
-			
-			return df;
-		}
-		
 		leValues(dataframe, values, axis) {
 			var df = null;
 			
@@ -698,20 +665,6 @@ var getScriptPromisify = (src) => {
 		}
 		
 		geValue(dataframe, value) {
-			var df = null;
-			
-			if(dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
-				
-				if(df != null) {
-					df = df.ge(value);
-				}
-			}
-			
-			return df;
-		}
-		
-		geStrValue(dataframe, value) {
 			var df = null;
 			
 			if(dataframe != null) {
@@ -777,7 +730,16 @@ var getScriptPromisify = (src) => {
 				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					df = df.ne(value);
+					
+					var df_cmp = new Array();
+					
+					for(var i=0; i<df.shape[0]; i++) {
+						for(var j=0; i<f.shape[1]; j++) {
+							df_cmp[i][j] = (df.iat(i, j) != value);
+						}	
+					}
+					
+					df = this.newDataFrame(df_cmp, {columns: dataframe.$columns});
 				}
 			}
 			
@@ -836,7 +798,16 @@ var getScriptPromisify = (src) => {
 				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					df = df.eq(value);
+					
+					var df_cmp = new Array();
+					
+					for(var i=0; i<df.shape[0]; i++) {
+						for(var j=0; i<f.shape[1]; j++) {
+							df_cmp[i][j] = (df.iat(i, j) == value);
+						}	
+					}
+					
+					df = this.newDataFrame(df_cmp, {columns: dataframe.$columns});
 				}
 			}
 			

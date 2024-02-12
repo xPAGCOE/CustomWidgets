@@ -3,7 +3,7 @@
     "vendor": "SAP",
     "license": "",
     "id": "com.sap.sample.sacdataframe",
-    "version": "0.9.1",
+    "version": "0.9.2",
     "name": "JavaScript DataFrame for SAC",
     "newInstancePrefix": "SACDataFrame",
     "description": "A widget that provides DataFrame-like functions",
@@ -30,7 +30,11 @@
 			"returnType": "Selection",
 			"description": "Create a new DataFrame with data and specified options",
 			"parameters": [ {"name": "data", "type": "Selection[]", "description": "JSON data to set"},
-							{"name": "options", "type": "Selection", "description": "JSON options to set"}]
+							{"name": "options", "type": "Selection", "description": "JSON options to set"} ]
+		},
+		"print": {
+			"description": "Pretty prints default (10) number of rows in a DataFrame to the console",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "DataFrame to print to the console"} ]
 		},
 		"index": {
 			"returnType": "integer[]",
@@ -254,30 +258,6 @@
 			"description": "Get equal to number, element-wise",
 			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
 							{"name": "value", "type": "number", "description": "Number to compare with"} ]
-		},
-		"ltStrValue": {
-			"returnType": "Selection",
-			"description": "Get less than of string, element-wise",
-			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
-							{"name": "value", "type": "string", "description": "String to compare with"} ]
-		},
-		"gtStrValue": {
-			"returnType": "Selection",
-			"description": "Get greater than of string, element-wise",
-			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
-							{"name": "value", "type": "string", "description": "String to compare with"} ]
-		},
-		"leStrValue": {
-			"returnType": "Selection",
-			"description": "Get less than or equal to string, element-wise",
-			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
-							{"name": "value", "type": "string", "description": "String to compare with"} ]
-		},
-		"geStrValue": {
-			"returnType": "Selection",
-			"description": "Get greater than or equal to string, element-wise",
-			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
-							{"name": "value", "type": "string", "description": "String to compare with"} ]
 		},
 		"neStrValue": {
 			"returnType": "Selection",
