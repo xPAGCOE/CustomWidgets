@@ -734,6 +734,9 @@ var getScriptPromisify = (src) => {
 					var df_cmp = new Array();
 					
 					for(var i=0; i<df.shape[0]; i++) {
+						
+						df_cmp[i] = new Array();
+						
 						for(var j=0; j<df.shape[1]; j++) {
 							df_cmp[i][j] = Boolean(df.iat(i, j) != value);
 						}	
@@ -802,9 +805,11 @@ var getScriptPromisify = (src) => {
 					var df_cmp = new Array();
 					
 					for(var i=0; i<df.shape[0]; i++) {
+						
+						df_cmp[i] = new Array();
+						
 						for(var j=0; j<df.shape[1]; j++) {
-							//df_cmp[i][j] = Boolean(df.iat(i, j) == value);
-							df_cmp[i][j] = df.iat(i, j);
+							df_cmp[i][j] = Boolean(df.iat(i, j) == value);
 						}	
 					}
 					
