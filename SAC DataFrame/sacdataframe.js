@@ -274,7 +274,7 @@ var getScriptPromisify = (src) => {
 		}
 		
 		// query
-		query(dataframe, kwargs) {
+		query(dataframe, condition) {
 			var df = null;
 			
 			if(dataframe != null) {
@@ -282,7 +282,7 @@ var getScriptPromisify = (src) => {
 				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					df = df.query(kwargs);
+					df = df.query(condition);
 				}
 			}
 			
@@ -292,40 +292,37 @@ var getScriptPromisify = (src) => {
 		/*** Binary operator functions ***/
 		// Add
 		addDataFrame(dataframe, other) {
-			
-			var df_new = null;
+			var df = null;
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
 				
 				if(df != null) {
-					df_new = df.add(df_oth);
+					df = df.add(df_oth);
 				}
 			}
 			
-			return df_new;
+			return df;
 		}
 		
 		addValue(dataframe, value) {
-			
-			var df_new = null;
+			var df = null;
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					df_new = df.add(value);
+					df = df.add(value);
 				}
 			}
 			
-			return df_new;
+			return df;
 		}
 		
 		addValues(dataframe, values, axis, inplace) {
-			
 			var df = null;
 			
 			if(dataframe != null) {
@@ -348,40 +345,38 @@ var getScriptPromisify = (src) => {
 		
 		// Sub
 		subDataFrame(dataframe, other) {
-			
-			var df_new = null;
+			var df = null;
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
 				
 				if(df != null) {
-					df_new = df.sub(df_oth);
+					df = df.sub(df_oth);
 				}
 			}
 			
-			return df_new;
+			return df;
 		}
 		
 		subValue(dataframe, value) {
 			
-			var df_new = null;
+			var df = null;
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					df_new = df.sub(value);
+					df = df.sub(value);
 				}
 			}
 			
-			return df_new;
+			return df;
 		}
 		
 		subValues(dataframe, values, axis, inplace) {
-			
 			var df = null;
 			
 			if(dataframe != null) {
@@ -404,40 +399,37 @@ var getScriptPromisify = (src) => {
 		
 		// mul
 		mulDataFrame(dataframe, other) {
-			
-			var df_new = null;
+			var df = null;
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
 				
 				if(df != null) {
-					df_new = df.mul(df_oth);
+					df = df.mul(df_oth);
 				}
 			}
 			
-			return df_new;
+			return df;
 		}
 		
 		mulValue(dataframe, value) {
-			
-			var df_new = null;
+			var df = null;
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					df_new = df.mul(value);
+					df = df.mul(value);
 				}
 			}
 			
-			return df_new;
+			return df;
 		}
 		
 		mulValues(dataframe, values, axis, inplace) {
-			
 			var df = null;
 			
 			if(dataframe != null) {
@@ -460,40 +452,37 @@ var getScriptPromisify = (src) => {
 		
 		// Div
 		divDataFrame(dataframe, other) {
-			
-			var df_new = null;
+			var df = null;
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
 				
 				if(df != null) {
-					df_new = df.div(df_oth);
+					df = df.div(df_oth);
 				}
 			}
 			
-			return df_new;
+			return df;
 		}
 		
 		divValue(dataframe, value) {
-			
-			var df_new = null;
+			var df = null;
 			
 			if(dataframe != null) {
 				
-				var df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
 				
 				if(df != null) {
-					df_new = df.div(value);
+					df = df.div(value);
 				}
 			}
 			
-			return df_new;
+			return df;
 		}
 		
 		divValues(dataframe, values, axis, inplace) {
-			
 			var df = null;
 			
 			if(dataframe != null) {
@@ -508,6 +497,277 @@ var getScriptPromisify = (src) => {
 					else {
 						df = df.div(sf_values, {axis: axis, inplace: inplace});
 					}
+				}
+			}
+			
+			return df;
+		}
+		
+		// Comparison operators
+		// <
+		ltDataFrame(dataframe, other) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
+				
+				if((df != null) && (df_oth != null)) {
+					df = df.lt(df_oth);
+				}
+			}
+			
+			return df;
+		}
+		
+		ltValue(dataframe, value) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df = df.lt(value);
+				}
+			}
+			
+			return df;
+		}
+		
+		ltValues(dataframe, values, axis) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var sf_values = new this.dfd.Series(values);
+				
+				if(df != null) {
+					df = df.lt(sf_values, {axis: axis});
+				}
+			}
+			
+			return df;
+		}
+		
+		// >
+		gtDataFrame(dataframe, other) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
+				
+				if((df != null) && (df_oth != null)) {
+					df = df.gt(df_oth);
+				}
+			}
+			
+			return df;
+		}
+		
+		gtValue(dataframe, value) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df = df.gt(value);
+				}
+			}
+			
+			return df;
+		}
+		
+		gtValues(dataframe, values, axis) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var sf_values = new this.dfd.Series(values);
+				
+				if(df != null) {
+					df = df.gt(sf_values, {axis: axis});
+				}
+			}
+			
+			return df;
+		}
+		
+		// <=
+		leDataFrame(dataframe, other) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
+				
+				if((df != null) && (df_oth != null)) {
+					df = df.le(df_oth);
+				}
+			}
+			
+			return df;
+		}
+		
+		leValue(dataframe, value) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df = df.le(value);
+				}
+			}
+			
+			return df;
+		}
+		
+		leValues(dataframe, values, axis) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var sf_values = new this.dfd.Series(values);
+				
+				if(df != null) {
+					df = df.le(sf_values, {axis: axis});
+				}
+			}
+			
+			return df;
+		}
+		
+		// >=
+		geDataFrame(dataframe, other) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
+				
+				if((df != null) && (df_oth != null)) {
+					df = df.ge(df_oth);
+				}
+			}
+			
+			return df;
+		}
+		
+		geValue(dataframe, value) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df = df.ge(value);
+				}
+			}
+			
+			return df;
+		}
+		
+		geValues(dataframe, values, axis) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var sf_values = new this.dfd.Series(values);
+				
+				if(df != null) {
+					df = df.ge(sf_values, {axis: axis});
+				}
+			}
+			
+			return df;
+		}
+		
+		// <>
+		neDataFrame(dataframe, other) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
+				
+				if((df != null) && (df_oth != null)) {
+					df = df.ne(df_oth);
+				}
+			}
+			
+			return df;
+		}
+		
+		neValue(dataframe, value) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df = df.ne(value);
+				}
+			}
+			
+			return df;
+		}
+		
+		neValues(dataframe, values, axis) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var sf_values = new this.dfd.Series(values);
+				
+				if(df != null) {
+					df = df.ne(sf_values, {axis: axis});
+				}
+			}
+			
+			return df;
+		}
+		
+		// =
+		eqDataFrame(dataframe, other) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var df_oth = this.newDataFrame(other.$data, {columns: other.$columns});
+				
+				if((df != null) && (df_oth != null)) {
+					df = df.eq(df_oth);
+				}
+			}
+			
+			return df;
+		}
+		
+		eqValue(dataframe, value) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df = df.eq(value);
+				}
+			}
+			
+			return df;
+		}
+		
+		eqValues(dataframe, values, axis) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				var sf_values = new this.dfd.Series(values);
+				
+				if(df != null) {
+					df = df.eq(sf_values, {axis: axis});
 				}
 			}
 			

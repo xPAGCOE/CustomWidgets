@@ -3,7 +3,7 @@
     "vendor": "SAP",
     "license": "",
     "id": "com.sap.sample.sacdataframe",
-    "version": "0.9.0",
+    "version": "0.9.1",
     "name": "JavaScript DataFrame for SAC",
     "newInstancePrefix": "SACDataFrame",
     "description": "A widget that provides DataFrame-like functions",
@@ -101,7 +101,7 @@
 			"returnType": "Selection",
 			"description": "Query the DataFrame by the result of a logical comparison or boolean mask",
 			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
-							{"name": "args", "type": "Selection", "description": "{condition, column, is, to, inplace}"} ]
+							{"name": "condition", "type": "Selection", "description": "Boolean condition"} ]
 		},
 		"addDataFrame": {
 			"returnType": "Selection",
@@ -182,6 +182,120 @@
 							{"name": "values", "type": "number[]", "description": "Values to divide with"},
 							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"},
 							{"name": "inplace", "type": "boolean", "description": "Perform the operation inplace or not"} ]
+		},
+		"ltDataFrame": {
+			"returnType": "Selection",
+			"description": "Get less than of dataframe, element-wise",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "other", "type": "Selection", "description": "DataFrame to compare with"} ]
+		},
+		"gtDataFrame": {
+			"returnType": "Selection",
+			"description": "Get greater than of dataframe, element-wise",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "other", "type": "Selection", "description": "DataFrame to compare with"} ]
+		},
+		"leDataFrame": {
+			"returnType": "Selection",
+			"description": "Get less than or equal to dataframe, element-wise",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "other", "type": "Selection", "description": "DataFrame to compare with"} ]
+		},
+		"geDataFrame": {
+			"returnType": "Selection",
+			"description": "Get greater than or equal to dataframe, element-wise",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "other", "type": "Selection", "description": "DataFrame to compare with"} ]
+		},
+		"neDataFrame": {
+			"returnType": "Selection",
+			"description": "Get not equal to dataframe, element-wise",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "other", "type": "Selection", "description": "DataFrame to compare with"} ]
+		},
+		"eqDataFrame": {
+			"returnType": "Selection",
+			"description": "Get equal to dataframe, element-wise",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "other", "type": "Selection", "description": "DataFrame to compare with"} ]
+		},
+		"ltValue": {
+			"returnType": "Selection",
+			"description": "Get less than of number, element-wise",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "value", "type": "number", "description": "Number to compare with"} ]
+		},
+		"gtValue": {
+			"returnType": "Selection",
+			"description": "Get greater than of number, element-wise",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "value", "type": "number", "description": "Number to compare with"} ]
+		},
+		"leValue": {
+			"returnType": "Selection",
+			"description": "Get less than or equal to number, element-wise",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "value", "type": "number", "description": "Number to compare with"} ]
+		},
+		"geValue": {
+			"returnType": "Selection",
+			"description": "Get greater than or equal to number, element-wise",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "value", "type": "number", "description": "Number to compare with"} ]
+		},
+		"neValue": {
+			"returnType": "Selection",
+			"description": "Get not equal to number, element-wise",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "value", "type": "number", "description": "Number to compare with"} ]
+		},
+		"eqValue": {
+			"returnType": "Selection",
+			"description": "Get equal to number, element-wise",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "value", "type": "number", "description": "Number to compare with"} ]
+		},
+		"ltValues": {
+			"returnType": "Selection",
+			"description": "Get less than of numbers, element-wise",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "values", "type": "number[]", "description": "Numbers to compare with"},
+							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"} ]
+		},
+		"gtValues": {
+			"returnType": "Selection",
+			"description": "Get greater than of numbers, element-wise",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "values", "type": "number[]", "description": "Numbers to compare with"},
+							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"} ]
+		},
+		"leValues": {
+			"returnType": "Selection",
+			"description": "Get less than or equal to numbers, element-wise",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "values", "type": "number[]", "description": "Numbers to compare with"},
+							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"} ]
+		},
+		"geValues": {
+			"returnType": "Selection",
+			"description": "Get greater than or equal to numbers, element-wise",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "values", "type": "number[]", "description": "Numbers to compare with"},
+							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"} ]
+		},
+		"neValues": {
+			"returnType": "Selection",
+			"description": "Get not equal to numbers, element-wise",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "values", "type": "number[]", "description": "Numbers to compare with"},
+							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"} ]
+		},
+		"eqValues": {
+			"returnType": "Selection",
+			"description": "Get equal to numbers, element-wise",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "values", "type": "number[]", "description": "Numbers to compare with"},
+							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"} ]
 		},
 		"max": {
 			"returnType": "Selection",
@@ -283,7 +397,7 @@
 			"description": "Sort values accross column specified",
 			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
 							{"name": "column", "type": "string", "description": "Columns to replace, all when empty"},
-							{"name": "ascending", "type": "boolean", "description": "Sort by ascending order (True) or descending (False)"}
+							{"name": "ascending", "type": "boolean", "description": "Sort by ascending order (True) or descending (False)"},
 							{"name": "inplace", "type": "boolean", "description": "Perform the operation inplace or not"} ]
 		},
 		"transpose": {
