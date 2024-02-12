@@ -534,6 +534,20 @@ var getScriptPromisify = (src) => {
 			return df;
 		}
 		
+		ltStrValue(dataframe, value) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df = df.lt(value);
+				}
+			}
+			
+			return df;
+		}
+		
 		ltValues(dataframe, values, axis) {
 			var df = null;
 			
@@ -566,6 +580,20 @@ var getScriptPromisify = (src) => {
 		}
 		
 		gtValue(dataframe, value) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df = df.gt(value);
+				}
+			}
+			
+			return df;
+		}
+		
+		gtStrValue(dataframe, value) {
 			var df = null;
 			
 			if(dataframe != null) {
@@ -624,6 +652,20 @@ var getScriptPromisify = (src) => {
 			return df;
 		}
 		
+		leStrValue(dataframe, value) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df = df.le(value);
+				}
+			}
+			
+			return df;
+		}
+		
 		leValues(dataframe, values, axis) {
 			var df = null;
 			
@@ -656,6 +698,20 @@ var getScriptPromisify = (src) => {
 		}
 		
 		geValue(dataframe, value) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df = df.ge(value);
+				}
+			}
+			
+			return df;
+		}
+		
+		geStrValue(dataframe, value) {
 			var df = null;
 			
 			if(dataframe != null) {
@@ -714,6 +770,20 @@ var getScriptPromisify = (src) => {
 			return df;
 		}
 		
+		neStrValue(dataframe, value) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df = df.ne(value);
+				}
+			}
+			
+			return df;
+		}
+		
 		neValues(dataframe, values, axis) {
 			var df = null;
 			
@@ -746,6 +816,20 @@ var getScriptPromisify = (src) => {
 		}
 		
 		eqValue(dataframe, value) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns});
+				
+				if(df != null) {
+					df = df.eq(value);
+				}
+			}
+			
+			return df;
+		}
+		
+		eqStrValue(dataframe, value) {
 			var df = null;
 			
 			if(dataframe != null) {
