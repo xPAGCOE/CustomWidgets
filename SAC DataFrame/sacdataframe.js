@@ -1199,30 +1199,22 @@ var getScriptPromisify = (src) => {
 					// Retrieve all columns except the one to be transposed
 					var col_idx = df.$columns.indexOf(columns[1]);
 					var groupby_cols = df.$columns.slice(0, col_idx).concat(df.$columns.slice(col_idx + 1));
-					console.log(groupby_cols);
 					
 					// Sum group by columns
 					df = df.groupby(groupby_cols).sum();
 					
-					/*
 					// Extract new column names from values
 					var sf_newcols = df[columns[0]].unique();
 					
-					// Complete with non-affected columns
-					var arr_restcols = new Array(df.$columns.length - 2);
+					// Get other column names from sum df
+					col_idx = df.$columns.indexOf(columns[0]);
+					var rest_cols = df.$columns.slice(0, col_idx).concat(df.$columns.slice(col_idx + 1));
 					
-					for(var j=0; j<df.$columns.length; j++) {
-						
-						if((df.$columns[j] != columns[0]) && (df.$columns[j] != columns[1])) {
-							arr_restcols.push(df.$columns[j]);
-						}
-					}
-					
-					var sf_restcols = new this.dfd.Series(arr_restcols);
+					var sf_restcols = new this.dfd.Series(rest_cols);
+					console.log(sf_restcols);
 					
 					sf_newcols.append(sf_restcols, sf_restcols.$index, {inplace: true});
 					console.log(sf_newcols);
-					*/
 				}
 			}
 			
