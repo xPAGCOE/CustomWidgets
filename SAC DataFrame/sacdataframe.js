@@ -1201,7 +1201,7 @@ var getScriptPromisify = (src) => {
 					var groupby_cols = df.$columns.slice(0, col_idx).concat(df.$columns.slice(col_idx + 1));
 					
 					// Sum group by columns
-					df_groupby = df.groupby(groupby_cols).sum();
+					var df_groupby = df.groupby(groupby_cols).sum();
 					
 					// Extract new column names from values
 					var sf_newcols = df_groupby[columns[0]].unique();
