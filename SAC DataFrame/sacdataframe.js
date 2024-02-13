@@ -1211,9 +1211,12 @@ var getScriptPromisify = (src) => {
 					var rest_cols = df.$columns.slice(0, col_idx).concat(df.$columns.slice(col_idx + 1));
 					
 					var sf_restcols = new this.dfd.Series(rest_cols);
+					var sf_restcols_idx = new this.dfd.Series(rest_cols.$index);
+					sf_restcols_idx.add(sf_newcols.$index.length, {inplace: true});
 					console.log(sf_restcols);
+					console.log(sf_restcols_idx);
 					
-					sf_newcols.append(sf_restcols, sf_restcols.$index.forEach((ite) => ite + sf_newcols.count()), {inplace: true});
+					sf_newcols.append(sf_restcols, sf_restcols_idx.$data, {inplace: true});
 					console.log(sf_newcols);
 				}
 			}
