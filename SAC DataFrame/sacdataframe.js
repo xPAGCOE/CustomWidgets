@@ -100,10 +100,19 @@ var getScriptPromisify = (src) => {
 		
 		// print
 		print(dataframe) {
-			var df = this.newInternalDataFrame(dataframe);
+			var df_sf = null;
+			
+			if (dataframe != null) {
+				if(!dataframe.$isSeries) {
+					df_sf = this.newInternalDataFrame(dataframe);
+				}
+				else {
+					df_sf = new this.dfd.Series(dataframe$data);
+				}
 				
-			if(df != null) {
-				df.print();
+				if(df_sf != null) {
+					df.print();
+				}
 			}
 		}
 		
@@ -126,7 +135,6 @@ var getScriptPromisify = (src) => {
 		}
 		
 		// column
-		/*
 		column(dataframe, name) {
 			
 			var col = null;
@@ -137,34 +145,6 @@ var getScriptPromisify = (src) => {
 				
 				if(df != null) {
 					col = df.column(name);
-				}
-			}
-			
-			return col;
-		}
-		*/
-		
-		column(dataframe, name) {
-			
-			var col = null;
-			
-			if(dataframe != null) {
-				
-				var df = this.newInternalDataFrame(dataframe);
-				if(df != null) {
-					
-					col = df.column(name);
-					if(col != null) {
-						
-						var col_data = new Array();
-						
-						for(var i=0; i<col.$index.length; i++) {
-							col_data[i] = new Array(1);
-							col_data[i][0] = col.$data[i];
-						}
-						
-						df = this.newDataFrame(col_data, {columns: [name], index: col.$index});
-					}
 				}
 			}
 			
