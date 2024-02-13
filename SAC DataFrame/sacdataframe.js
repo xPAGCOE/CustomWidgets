@@ -107,7 +107,7 @@ var getScriptPromisify = (src) => {
 					df_sf = this.newInternalDataFrame(dataframe);
 				}
 				else {
-					df_sf = new this.dfd.Series(dataframe$data);
+					df_sf = new this.dfd.Series(dataframe.$data);
 				}
 				
 				if(df_sf != null) {
