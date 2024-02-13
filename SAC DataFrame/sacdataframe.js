@@ -320,7 +320,8 @@ var getScriptPromisify = (src) => {
 				var df_mask = this.newInternalDataFrame(mask);
 				
 				if((df != null) && (df_mask != null)) {
-					df = df.query(df_mask);
+					//df = df.query(df_mask);
+					df = df.query({ condition: df_mask });
 				}
 			}
 			
