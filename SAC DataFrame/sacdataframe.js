@@ -1186,6 +1186,7 @@ var getScriptPromisify = (src) => {
 		}
 		
 		// transposeColumns
+		// columns[0,1]: columns to transpose
 		transposeColumns(dataframe, columns) {
 			
 			var df = null;
@@ -1195,7 +1196,29 @@ var getScriptPromisify = (src) => {
 				df = this.newInternalDataFrame(dataframe);
 				
 				if(df != null) {
-					; //TODO
+					// Find non-numerical columns (int32 => date)
+					var df_cols = df.selectDtypes(['string', "int32"]);
+					
+					// Sum group by non-numerical columns
+					df = df.groupby(df_cols.$columns).sum();
+					
+					// Extract new column names from values
+					var sf_newcols = df[columns[0]].unique();
+					
+					// Complete with non-affected columns
+					var arr_restcols = new Array(df.$columns.length - 2);
+					
+					for(var j=0; j<df.$columns.length; j++) {
+						
+						if((df.$columns[j] != columns[0]) && (df.$columns[j] != columns[1])) {
+							arr_restcols.push(df.$columns[j]);
+						}
+					}
+					
+					var sf_restcols = new this.dfd.Series(arr_restcols);
+					
+					sf_newcols.append(sf_restcols, sf_restcols.$index, {inplace: true});
+					console.log(sf_newcols);
 				}
 			}
 			
