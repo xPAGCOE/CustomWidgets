@@ -335,14 +335,13 @@ var getScriptPromisify = (src) => {
 			if(dataframe != null) {
 				df = this.newInternalDataFrame(dataframe);
 				
-				df = df.loc({ columns: [column] });
-				if(df != null) {
+				if(df[column] != null) {
 					
 					var idx_drop = new Array();
 					
 					for(var i=0; i<df.$index.length; i++) {
-						if(df.$data[i] != value) {
-							idx_drop.push(df.$index[i]);
+						if(df[column].$data[i] != value) {
+							idx_drop.push(df[column].$index[i]);
 						}
 					}
 					
