@@ -891,7 +891,60 @@ var getScriptPromisify = (src) => {
 		
 		/*** Function application & GroupBy ***/
 		
-		//TODO
+		// groupBy
+		groupBy(dataframe, columns, operation) {
+			var df = null;
+			
+			if(dataframe != null) {
+				
+				df = this.newInternalDataFrame(dataframe);
+				
+				if(df != null) {
+					
+					var df_groupby = df.groupby(columns);
+					
+					switch(operation) {
+						case "count":
+							df = df_groupby.count();
+							break;
+						case "sum":
+							df = df_groupby.sum();
+							break;
+						case "std":
+							df = df_groupby.std();
+							break;
+						case "var":
+							df = df_groupby.var();
+							break;
+						case "mean":
+							df = df_groupby.mean();
+							break;
+						case "cumSum":
+							df = df_groupby.cumSum();
+							break;
+						case "cumMax":
+							df = df_groupby.cumMax();
+							break;
+						case "cumProd":
+							df = df_groupby.cumProd();
+							break;
+						case "cumMin":
+							df = df_groupby.cumMin();
+						 	break;
+						case "max":
+							df = df_groupby.max();
+							break;
+						case "min":
+							df = df_groupby.min();
+							break;
+						default:
+							break;
+					}
+				}
+			}
+			
+			return df;
+		}
 		
 		/*** Computations / descriptive stats ***/
 		// Max
@@ -1126,6 +1179,23 @@ var getScriptPromisify = (src) => {
 				
 				if(df != null) {
 					df = df.T;
+				}
+			}
+			
+			return df;
+		}
+		
+		// transposeColumns
+		transposeColumns(dataframe, columns) {
+			
+			var df = null;
+			
+			if(dataframe != null) {
+				
+				df = this.newInternalDataFrame(dataframe);
+				
+				if(df != null) {
+					; //TODO
 				}
 			}
 			

@@ -3,7 +3,7 @@
     "vendor": "SAP",
     "license": "",
     "id": "com.sap.sample.sacdataframe",
-    "version": "0.9.6",
+    "version": "0.9.7",
     "name": "JavaScript DataFrame for SAC",
     "newInstancePrefix": "SACDataFrame",
     "description": "A widget that provides DataFrame-like functions",
@@ -326,6 +326,13 @@
 							{"name": "values", "type": "number[]", "description": "Numbers to compare with"},
 							{"name": "axis", "type": "integer", "description": "0 for row, 1 for column"} ]
 		},
+		"groupBy": {
+			"returnType": "Selection",
+			"description": "Return a group by result by operation",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "columns", "type": "string[]", "description": "Columns to group by operation"},
+							{"name": "operation", "type": "string", "description": "Operation: 'count', 'sum', 'std', 'var', 'mean', 'cumSum', 'cumMax', 'cumProd', 'cumMin', 'max', 'min', ''"} ]
+		},
 		"max": {
 			"returnType": "Selection",
 			"description": "Return the maximum of the values for the requested axis",
@@ -433,6 +440,12 @@
 			"returnType": "Selection",
 			"description": "Return transposed DataFrame",
 			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"} ]
+		},
+		"transposeColumns": {
+			"returnType": "Selection",
+			"description": "Return transposed DataFrame for selected columns",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "columns", "type": "string[]", "description": "Columns to transpose"} ]
 		},
 		"appendRow": {
 			"returnType": "Selection",
