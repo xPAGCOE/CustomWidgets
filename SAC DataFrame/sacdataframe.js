@@ -111,7 +111,7 @@ var getScriptPromisify = (src) => {
 				}
 				
 				if(df_sf != null) {
-					df.print();
+					df_sf.print();
 				}
 			}
 		}
