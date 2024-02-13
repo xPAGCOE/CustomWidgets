@@ -1202,24 +1202,45 @@ var getScriptPromisify = (src) => {
 					
 					// Sum group by columns
 					df = df.groupby(groupby_cols).sum();
+					//console.log(df);
 					
 					// Extract new column names from values
 					var sf_newcols = df[columns[0]].unique();
-					console.log(sf_newcols);
 					
 					// Get other column names from sum df
 					col_idx = df.$columns.indexOf(columns[0]);
 					var rest_cols = df.$columns.slice(0, col_idx).concat(df.$columns.slice(col_idx + 1));
 					
 					var sf_restcols = new this.dfd.Series(rest_cols);
-					console.log(sf_restcols);
-					
 					var sf_restcols_idx = new this.dfd.Series(sf_restcols.$index);
 					sf_restcols_idx.add(sf_newcols.$index.length, {inplace: true});
-					console.log(sf_restcols_idx);
 					
 					sf_newcols.append(sf_restcols, sf_restcols_idx.$data, {inplace: true});
-					console.log(sf_newcols);
+					//console.log(sf_newcols);
+					
+					// Data mapping from group by to transposed df
+					var new_data = new Array();
+					var pivot_value = null;
+					
+					for(var i=0; i<df.$index.length; i++) {
+						
+						new_data[i] = new Array(sf_newcols.count());
+						
+						for(var j=0; j<df.$columns.length; j++) {
+							
+							if(df.$columns[j] == columns[0]) {
+								pivot_value = df.$data[i][j];
+							}
+							else if (df.$columns[j] == columns[1]) {
+								new_data[i][sf_newcols.$data.indexOf(pivot_value)] = df.$data[i][j];
+							}
+							else {
+								new_data[i][sf_newcols.$data.indexOf(df.$columns[j])] = df.$data[i][j];
+							}
+						}
+					}
+					
+					df = this.newDataFrame(new_data, {columns: sf_newcols.$data}, false);
 				}
 			}
 			
