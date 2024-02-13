@@ -1196,12 +1196,13 @@ var getScriptPromisify = (src) => {
 				df = this.newInternalDataFrame(dataframe);
 				
 				if(df != null) {
-					// Find non-numerical columns (int32 => date)
-					var df_cols = df.selectDtypes(["string", "int32"]);
-					console.log(df_cols);
+					// Retrieve all columns except the one to be transposed
+					var col_idx = df.$columns.indexOf(columns[1]);
+					var groupby_cols = df.$columns.slice(0, col_idx).concat(df.$columns.slice(col_idx + 1));
+					console.log(groupby_cols);
 					
-					// Sum group by non-numerical columns
-					df = df.groupby(df_cols.$columns).sum();
+					// Sum group by columns
+					df = df.groupby(groupby_cols).sum();
 					
 					/*
 					// Extract new column names from values
