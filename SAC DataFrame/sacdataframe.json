@@ -3,7 +3,7 @@
     "vendor": "SAP",
     "license": "",
     "id": "com.sap.sample.sacdataframe",
-    "version": "0.9.5",
+    "version": "0.9.6",
     "name": "JavaScript DataFrame for SAC",
     "newInstancePrefix": "SACDataFrame",
     "description": "A widget that provides DataFrame-like functions",
@@ -112,6 +112,13 @@
 			"description": "Query the DataFrame by the result of a logical comparison or boolean mask",
 			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
 							{"name": "mask", "type": "Selection", "description": "Boolean mask condition"} ]
+		},
+		"filter": {
+			"returnType": "Selection",
+			"description": "Filter the DataFrame by keeping only rows matching column value",
+			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
+							{"name": "column", "type": "string", "description": "Column name"},
+							{"name": "value", "type": "string", "description": "Value to filter on"} ]
 		},
 		"addDataFrame": {
 			"returnType": "Selection",

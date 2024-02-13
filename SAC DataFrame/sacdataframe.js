@@ -320,8 +320,33 @@ var getScriptPromisify = (src) => {
 				var df_mask = this.newInternalDataFrame(mask);
 				
 				if((df != null) && (df_mask != null)) {
-					//df = df.query(df_mask);
+					// Doesn't work...
 					df = df.query({ condition: df_mask });
+				}
+			}
+			
+			return df;
+		}
+		
+		// filter
+		filter(dataframe, column, value) {
+			var df = null;
+			
+			if(dataframe != null) {
+				df = this.newInternalDataFrame(dataframe);
+				
+				df = df.loc({ columns: [column] });
+				if(df != null) {
+					
+					var idx_todrop = new Array();
+					
+					for(var i=0; i<df.$index.length; i++) {
+						if(df.$data[i] != value) {
+							idx_todrop.push(df.$index[i]);
+						}
+					}
+					
+					df.drop({ index: idx_topdrop, inplace: true });
 				}
 			}
 			
