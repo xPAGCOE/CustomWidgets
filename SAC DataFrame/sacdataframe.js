@@ -1213,7 +1213,7 @@ var getScriptPromisify = (src) => {
 					var sf_restcols = new this.dfd.Series(rest_cols);
 					console.log(sf_restcols);
 					
-					sf_newcols.append(sf_restcols, sf_restcols.$index, {inplace: true});
+					sf_newcols.append(sf_restcols, sf_restcols.$index.forEach((ite) => ite + sf_newcols.count()), {inplace: true});
 					console.log(sf_newcols);
 				}
 			}
