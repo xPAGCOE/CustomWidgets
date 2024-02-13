@@ -1222,7 +1222,7 @@ var getScriptPromisify = (src) => {
 					sf_restcols_idx.add(sf_newcols.$index.length, {inplace: true});
 					
 					sf_newcols.append(sf_restcols, sf_restcols_idx.$data, {inplace: true});
-					console.log(sf_newcols);
+					//console.log(sf_newcols);
 					
 					// Data mapping from group by to transposed df
 					var new_data = new Array();
@@ -1247,6 +1247,9 @@ var getScriptPromisify = (src) => {
 					}
 					
 					df = this.newDataFrame(new_data, {columns: sf_newcols.$data}, false);
+					
+					// Reducing the output
+					df = df.groupby(rest_cols).sum();
 				}
 			}
 			
