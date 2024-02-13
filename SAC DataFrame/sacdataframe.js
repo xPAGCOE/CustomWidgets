@@ -338,15 +338,15 @@ var getScriptPromisify = (src) => {
 				df = df.loc({ columns: [column] });
 				if(df != null) {
 					
-					var idx_todrop = new Array();
+					var idx_drop = new Array();
 					
 					for(var i=0; i<df.$index.length; i++) {
 						if(df.$data[i] != value) {
-							idx_todrop.push(df.$index[i]);
+							idx_drop.push(df.$index[i]);
 						}
 					}
 					
-					df.drop({ index: idx_topdrop, inplace: true });
+					df.drop({ index: idx_drop, inplace: true });
 				}
 			}
 			
