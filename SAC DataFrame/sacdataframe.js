@@ -1205,15 +1205,17 @@ var getScriptPromisify = (src) => {
 					
 					// Extract new column names from values
 					var sf_newcols = df[columns[0]].unique();
+					console.log(sf_newcols);
 					
 					// Get other column names from sum df
 					col_idx = df.$columns.indexOf(columns[0]);
 					var rest_cols = df.$columns.slice(0, col_idx).concat(df.$columns.slice(col_idx + 1));
 					
 					var sf_restcols = new this.dfd.Series(rest_cols);
-					var sf_restcols_idx = new this.dfd.Series(rest_cols.$index);
-					sf_restcols_idx.add(sf_newcols.$index.length, {inplace: true});
 					console.log(sf_restcols);
+					
+					var sf_restcols_idx = new this.dfd.Series(sf_restcols.$index);
+					sf_restcols_idx.add(sf_newcols.$index.length, {inplace: true});
 					console.log(sf_restcols_idx);
 					
 					sf_newcols.append(sf_restcols, sf_restcols_idx.$data, {inplace: true});
