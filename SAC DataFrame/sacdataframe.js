@@ -1197,11 +1197,13 @@ var getScriptPromisify = (src) => {
 				
 				if(df != null) {
 					// Find non-numerical columns (int32 => date)
-					var df_cols = df.selectDtypes(['string', "int32"]);
+					var df_cols = df.selectDtypes(["string", "int32"]);
+					console.log(df_cols);
 					
 					// Sum group by non-numerical columns
 					df = df.groupby(df_cols.$columns).sum();
 					
+					/*
 					// Extract new column names from values
 					var sf_newcols = df[columns[0]].unique();
 					
@@ -1219,6 +1221,7 @@ var getScriptPromisify = (src) => {
 					
 					sf_newcols.append(sf_restcols, sf_restcols.$index, {inplace: true});
 					console.log(sf_newcols);
+					*/
 				}
 			}
 			
