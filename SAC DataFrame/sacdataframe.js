@@ -283,10 +283,10 @@ var getScriptPromisify = (src) => {
 				
 				if(df != null) {
 					if(inplace == true) {
-						df.rename({mapper: mapper}, {axis: axis, inplace: inplace});
+						df.rename(mapper, {axis: axis, inplace: inplace});
 					}
 					else {
-						df = df.rename({mapper: mapper}, {axis: axis, inplace: inplace});
+						df = df.rename(mapper, {axis: axis, inplace: inplace});
 					}
 				}
 			}
@@ -1252,7 +1252,8 @@ var getScriptPromisify = (src) => {
 					df = df.groupby(rest_cols).sum();
 					
 					// Replace '_sum' columns with generic names
-					console.log(df);
+					// 20240215 - rename API doesn't work...
+					/*
 					var col_name = "";					
 					for(var k=0; k<df.$columns.length; k++) {
 						
@@ -1262,6 +1263,7 @@ var getScriptPromisify = (src) => {
 							df = df.rename({ col_name: col_name.substring(0, col_name.length - 4) }, { axis: 1, inplace: false });
 						}
 					}
+					*/
 				}
 				
 			}
