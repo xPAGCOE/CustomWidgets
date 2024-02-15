@@ -1253,6 +1253,7 @@ var getScriptPromisify = (src) => {
 					
 					// Replace '_sum' columns with generic names
 					df.$columns.forEach((col) => {
+						console.log(col);
 						if(col.endsWith("_sum")) {
 							df.rename({ col: col.substring(0, col.length - 4) }, { inplace: true });
 						}
