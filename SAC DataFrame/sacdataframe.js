@@ -1261,10 +1261,10 @@ var getScriptPromisify = (src) => {
 						}
 					});
 					*/
-					for(j=0; j<df.$columns.length; j++) {
+					for(var k=0; j<df.$columns.length; k++) {
 						
-						if(df.$columns[j].endsWith("_sum")) {
-							df.rename({ df.$columns[j]: df.$columns[j].slice(0, -4) }, { axis: 1, inplace: true });
+						if(df.$columns[k].endsWith("_sum")) {
+							df.rename({ df.$columns[k]: df.$columns[k].slice(0, -4) }, { axis: 1, inplace: true });
 							console.log(df);
 						}
 						
