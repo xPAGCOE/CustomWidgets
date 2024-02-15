@@ -1253,17 +1253,14 @@ var getScriptPromisify = (src) => {
 					
 					// Replace '_sum' columns with generic names
 					console.log(df);
-					var col_name = "";
-					
+					var col_name = "";					
 					for(var k=0; k<df.$columns.length; k++) {
 						
-						if(df.$columns[k].endsWith("_sum")) {
-							
-							df = df.rename({ df.$columns[k]: df.$columns[k].substring(0, df.$columns[k].length-4) });
-							
-							console.log(df);
-						}
+						col_name = df.$columns[k];
 						
+						if(col_name.endsWith("_sum")) {
+							df = df.rename({ col_name: col_name.substring(0, col_name.length - 4) });
+						}
 					}
 				}
 				
