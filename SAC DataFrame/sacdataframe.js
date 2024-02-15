@@ -1203,6 +1203,13 @@ var getScriptPromisify = (src) => {
 					// Sum group by columns
 					var df_groupby = df.groupby(groupby_cols).sum();
 					
+					// Replace '_sum' columns with generic names
+					df_groupby.$columns.forEach((col) => {
+						if(col.endsWith("_sum")) {
+							df_groupby.rename({ col: col.slice(0, -4) }, { inplace: true });
+						}
+					});
+					
 					// Extract new column names from values
 					var sf_newcols = df_groupby[columns[0]].unique();
 					
@@ -1226,7 +1233,7 @@ var getScriptPromisify = (src) => {
 					
 					// Data mapping from group by to transposed df
 					var new_data = new Array();
-					var pivot_value = null;
+					var pivot = null;
 					
 					for(var i=0; i<df_groupby.$index.length; i++) {
 						
@@ -1235,10 +1242,11 @@ var getScriptPromisify = (src) => {
 						for(var j=0; j<df_groupby.$columns.length; j++) {
 							
 							if(df_groupby.$columns[j] == columns[0]) {
-								pivot_value = df_groupby.$data[i][j];
+								pivot = df_groupby.$data[i][j];
 							}
-							else if (df_groupby.$columns[j] == columns[1].concat("_sum")) {
-								new_data[i][sf_newcols.$data.indexOf(pivot_value)] = df_groupby.$data[i][j];
+							//else if (df_groupby.$columns[j] == columns[1].concat("_sum")) {
+							else if (df_groupby.$columns[j] == columns[1]) {
+								new_data[i][sf_newcols.$data.indexOf(pivot)] = df_groupby.$data[i][j];
 							}
 							else {
 								new_data[i][sf_newcols.$data.indexOf(df_groupby.$columns[j])] = df_groupby.$data[i][j];
