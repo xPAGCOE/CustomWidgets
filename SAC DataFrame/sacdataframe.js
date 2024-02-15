@@ -1252,6 +1252,7 @@ var getScriptPromisify = (src) => {
 					df = df.groupby(rest_cols).sum();
 					
 					// Replace '_sum' columns with generic names
+					/*
 					console.log(df);
 					
 					for(var k=0; j<df.$columns.length; k++) {
@@ -1262,6 +1263,7 @@ var getScriptPromisify = (src) => {
 						}
 						
 					}
+					*/
 				}
 				
 			}
