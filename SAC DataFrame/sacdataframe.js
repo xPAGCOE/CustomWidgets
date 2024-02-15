@@ -1257,7 +1257,9 @@ var getScriptPromisify = (src) => {
 					for(var k=0; k<df.$columns.length; k++) {
 						
 						if(df.$columns[k].endsWith("_sum")) {
-							df.rename({ df.$columns[k]: df.$columns[k].slice(0, -4) }, { axis: 1, inplace: true });
+							
+							//df.rename({ df.$columns[k]: df.$columns[k].slice(0, -4) }, { axis: 1, inplace: true });
+							
 							console.log(df);
 						}
 						
