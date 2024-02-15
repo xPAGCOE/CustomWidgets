@@ -1194,7 +1194,7 @@ var getScriptPromisify = (src) => {
 			if(dataframe != null) {
 				
 				df = this.newInternalDataFrame(dataframe);
-/*
+
 				if(df != null) {
 					// Retrieve all columns except the one to be transposed
 					var col_idx = df.$columns.indexOf(columns[1]);
@@ -1263,7 +1263,7 @@ var getScriptPromisify = (src) => {
 						
 					}
 				}
-*/
+				
 			}
 			
 			return df;
