@@ -1253,12 +1253,22 @@ var getScriptPromisify = (src) => {
 					
 					// Replace '_sum' columns with generic names
 					console.log(df);
+					/*
 					df.$columns.forEach((col) => {
 						if(col.endsWith("_sum")) {
-							df = df.rename({ col: col.slice(0, -4) });
+							df.rename({ col: col.slice(0, -4) }, { axis: 1, inplace: true });
 							console.log(df);
 						}
 					});
+					*/
+					for(j=0; j<df.$columns.length; j++) {
+						
+						if(df.$columns[j].endsWith("_sum")) {
+							df.rename({ df.$columns[j]: df.$columns[j].slice(0, -4) }, { axis: 1, inplace: true });
+							console.log(df);
+						}
+						
+					}
 				}
 			}
 			
