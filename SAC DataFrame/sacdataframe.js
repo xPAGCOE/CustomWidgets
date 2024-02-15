@@ -1203,13 +1203,6 @@ var getScriptPromisify = (src) => {
 					// Sum group by columns
 					var df_groupby = df.groupby(groupby_cols).sum();
 					
-					// Replace '_sum' columns with generic names
-					df_groupby.$columns.forEach((col) => {
-						if(col.endsWith("_sum")) {
-							df_groupby.rename({ col: col.slice(0, -4) }, { inplace: true });
-						}
-					});
-					
 					// Extract new column names from values
 					var sf_newcols = df_groupby[columns[0]].unique();
 					
@@ -1244,8 +1237,7 @@ var getScriptPromisify = (src) => {
 							if(df_groupby.$columns[j] == columns[0]) {
 								pivot = df_groupby.$data[i][j];
 							}
-							//else if (df_groupby.$columns[j] == columns[1].concat("_sum")) {
-							else if (df_groupby.$columns[j] == columns[1]) {
+							else if (df_groupby.$columns[j] == columns[1].concat("_sum")) {
 								new_data[i][sf_newcols.$data.indexOf(pivot)] = df_groupby.$data[i][j];
 							}
 							else {
@@ -1258,6 +1250,13 @@ var getScriptPromisify = (src) => {
 					
 					// Reducing the output
 					df = df.groupby(rest_cols).sum();
+					
+					// Replace '_sum' columns with generic names
+					df.$columns.forEach((col) => {
+						if(col.endsWith("_sum")) {
+							df.rename({ col: col.slice(0, -4) }, { inplace: true });
+						}
+					});
 				}
 			}
 			
