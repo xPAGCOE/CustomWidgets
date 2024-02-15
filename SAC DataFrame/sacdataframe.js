@@ -1261,6 +1261,7 @@ var getScriptPromisify = (src) => {
 						}
 					});
 					*/
+					/*
 					for(var k=0; j<df.$columns.length; k++) {
 						
 						if(df.$columns[k].endsWith("_sum")) {
@@ -1269,6 +1270,7 @@ var getScriptPromisify = (src) => {
 						}
 						
 					}
+					*/
 				}
 			}
 			
