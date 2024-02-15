@@ -1249,6 +1249,7 @@ var getScriptPromisify = (src) => {
 					df = this.newDataFrame(new_data, {columns: sf_newcols.$data}, false);
 					
 					// Reducing the output
+					df = df.fillNa(0);
 					df = df.groupby(rest_cols).sum();
 					
 					// Replace '_sum' columns with generic names
