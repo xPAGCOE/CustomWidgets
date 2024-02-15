@@ -1194,7 +1194,7 @@ var getScriptPromisify = (src) => {
 			if(dataframe != null) {
 				
 				df = this.newInternalDataFrame(dataframe);
-				
+/*
 				if(df != null) {
 					// Retrieve all columns except the one to be transposed
 					var col_idx = df.$columns.indexOf(columns[1]);
@@ -1253,15 +1253,7 @@ var getScriptPromisify = (src) => {
 					
 					// Replace '_sum' columns with generic names
 					console.log(df);
-					/*
-					df.$columns.forEach((col) => {
-						if(col.endsWith("_sum")) {
-							df.rename({ col: col.slice(0, -4) }, { axis: 1, inplace: true });
-							console.log(df);
-						}
-					});
-					*/
-					/*
+					
 					for(var k=0; j<df.$columns.length; k++) {
 						
 						if(df.$columns[k].endsWith("_sum")) {
@@ -1270,8 +1262,8 @@ var getScriptPromisify = (src) => {
 						}
 						
 					}
-					*/
 				}
+*/
 			}
 			
 			return df;
