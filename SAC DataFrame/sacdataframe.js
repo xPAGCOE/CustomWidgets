@@ -1252,15 +1252,13 @@ var getScriptPromisify = (src) => {
 					df = df.groupby(rest_cols).sum();
 					
 					// Replace '_sum' columns with generic names
+					console.log(df);
 					df.$columns.forEach((col) => {
 						if(col.endsWith("_sum")) {
-							console.log(col);
-							console.log(col.slice(0, -4));
-							console.log(col.substring(0, col.length - 4));
-							
-							df.rename({ col: col.substring(0, col.length - 4) }, { inplace: true });
+							df.rename({ col: col.slice(0, -4) }, { inplace: true });
 						}
 					});
+					console.log(df);
 				}
 			}
 			
