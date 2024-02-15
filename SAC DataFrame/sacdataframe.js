@@ -1255,10 +1255,10 @@ var getScriptPromisify = (src) => {
 					console.log(df);
 					df.$columns.forEach((col) => {
 						if(col.endsWith("_sum")) {
-							df.rename({ col: col.slice(0, -4) }, { inplace: true });
+							df = df.rename({ col: col.slice(0, -4) });
+							console.log(df);
 						}
 					});
-					console.log(df);
 				}
 			}
 			
