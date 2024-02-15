@@ -1259,7 +1259,7 @@ var getScriptPromisify = (src) => {
 						col_name = df.$columns[k];
 						
 						if(col_name.endsWith("_sum")) {
-							df = df.rename({ col_name: col_name.substring(0, col_name.length - 4) });
+							df = df.rename({ col_name: col_name.substring(0, col_name.length - 4) }, { axis: 1, inplace: false });
 						}
 					}
 				}
