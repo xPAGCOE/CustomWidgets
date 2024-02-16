@@ -26,7 +26,7 @@ var getScriptPromisify = (src) => {
     class SACDataFrame extends HTMLElement{
 		
         constructor(){
-            console.log("constructor call");
+            //console.log("constructor call");
 			super();
 
             //HTML objects
@@ -96,7 +96,7 @@ var getScriptPromisify = (src) => {
 						if(data[i].data === null) { 
 							continue; 
 						}
-						
+						/*
 						data_new[i] = new Array();
 						
 						for(var j=0, j<data[i].data.length, j++) {
@@ -119,6 +119,7 @@ var getScriptPromisify = (src) => {
 							}
 							
 						}
+						*/
 					}
 					
 					df = new this.dfd.DataFrame(data_new, options);
