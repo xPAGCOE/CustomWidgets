@@ -89,13 +89,11 @@ var getScriptPromisify = (src) => {
 				
 				if(data != null) {
 					
-					console.log(data);
-					/*
 					var data_new = new Array();
 					
 					for(var i=0, i<data.length, i++) {
 						
-						if(data[i].data === null) { 
+						if(data[i].data == null) { 
 							continue; 
 						}
 
@@ -104,16 +102,16 @@ var getScriptPromisify = (src) => {
 						for(var j=0, j<data[i].data.length, j++) {
 							
 							switch(data[i].data[j].type) {
-								case AnyType.string:
+								case sdk_com_sap_sample_sacdataframe__0_AnyType.string:
 									data_new[i][j] = data[i].data[j].strValue;
 									break;
-								case AnyType.integer:
+								case sdk_com_sap_sample_sacdataframe__0_AnyType.integer:
 									data_new[i][j] = data[i].data[j].intValue;
 									break;
-								case AnyType.number:
+								case sdk_com_sap_sample_sacdataframe__0_AnyType.number:
 									data_new[i][j] = data[i].data[j].numValue;
 									break;
-								case AnyType.boolean:
+								case sdk_com_sap_sample_sacdataframe__0_AnyType.boolean:
 									data_new[i][j] = data[i].data[j].boolValue;
 									break;
 								default:
@@ -124,7 +122,6 @@ var getScriptPromisify = (src) => {
 					}
 					
 					df = new this.dfd.DataFrame(data_new, options);
-					*/
 				}
 				
 			}
