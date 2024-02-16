@@ -84,7 +84,7 @@ var getScriptPromisify = (src) => {
 		newDataFrame2(data, options) {
 			
 			var df = null;
-			
+			/*
 			if(this.dfd != null) {
 				
 				if(data != null) {
@@ -96,7 +96,7 @@ var getScriptPromisify = (src) => {
 						if(data[i].data === null) { 
 							continue; 
 						}
-						/*
+
 						data_new[i] = new Array();
 						
 						for(var j=0, j<data[i].data.length, j++) {
@@ -119,14 +119,13 @@ var getScriptPromisify = (src) => {
 							}
 							
 						}
-						*/
 					}
 					
 					df = new this.dfd.DataFrame(data_new, options);
 				}
 				
 			}
-			
+			*/
 			return df;
 		}
 		
