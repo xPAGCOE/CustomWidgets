@@ -68,20 +68,13 @@ var getScriptPromisify = (src) => {
 		// Methods
 		
 		// DataFrame creation
-		newDataFrame(data, options, is_series = false) {
+		newDataFrame(data, options) {
 			
 			var df = null;
 			
 			if(this.dfd != null) {
 				
-				if(is_series) {
-					var data_arr = new Array();
-					data_arr[0] = data;
-					df = new this.dfd.DataFrame(data_arr, options);
-				}
-				else {
-					df = new this.dfd.DataFrame(data, options);
-				}
+				df = new this.dfd.DataFrame(data, options);
 			}
 			
 			return df;
@@ -92,7 +85,7 @@ var getScriptPromisify = (src) => {
 			var df = null;
 			
 			if (dataframe != null) {
-				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, index: dataframe.$index}, dataframe.$isSeries);
+				df = this.newDataFrame(dataframe.$data, {columns: dataframe.$columns, index: dataframe.$index});
 			}
 			
 			return df;
@@ -1205,6 +1198,7 @@ var getScriptPromisify = (src) => {
 					
 					// Extract new column names from values
 					var sf_newcols = df_groupby[columns[0]].unique();
+					var new_cols = sf_newcols.$data;
 					
 					// Get other column names from sum df
 					col_idx = df.$columns.indexOf(columns[0]);
@@ -1221,8 +1215,8 @@ var getScriptPromisify = (src) => {
 					var sf_restcols_idx = new this.dfd.Series(sf_restcols.$index);
 					sf_restcols_idx.add(sf_newcols.$index.length, {inplace: true});
 					
+					// Complete pivot columns with resting ones
 					sf_newcols.append(sf_restcols, sf_restcols_idx.$data, {inplace: true});
-					//console.log(sf_newcols);
 					
 					// Data mapping from group by to transposed df
 					var new_data = new Array();
@@ -1246,14 +1240,15 @@ var getScriptPromisify = (src) => {
 						}
 					}
 					
-					df = this.newDataFrame(new_data, {columns: sf_newcols.$data}, false);
+					df = this.newDataFrame(new_data, {columns: sf_newcols.$data});
 					
 					// Reducing the output
-					df = df.fillNa(0);
+					//df.fillNa(0, { columns: rest_cols, inplace: true });
+					df.fillNa(0, { inplace: true });
 					df = df.groupby(rest_cols).sum();
 					
 					// Replace '_sum' columns with generic names
-					// 20240215 - rename API doesn't work...
+					// 20240215 - doesn't work...
 					/*
 					var col_name = "";					
 					for(var k=0; k<df.$columns.length; k++) {

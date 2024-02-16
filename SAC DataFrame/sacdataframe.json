@@ -30,8 +30,7 @@
 			"returnType": "Selection",
 			"description": "Create a new DataFrame with data and specified options",
 			"parameters": [ {"name": "data", "type": "Selection[]", "description": "JSON data to set"},
-							{"name": "options", "type": "Selection", "description": "JSON options to set"}, 
-							{"name": "is_series", "type": "boolean", "description": "is series flag (default=false)"} ]
+							{"name": "options", "type": "Selection", "description": "JSON options to set"} ]
 		},
 		"newInternalDataFrame": {
 			"returnType": "Selection",
@@ -445,7 +444,7 @@
 			"returnType": "Selection",
 			"description": "Return transposed DataFrame for selected columns",
 			"parameters": [ {"name": "dataframe", "type": "Selection", "description": "Input DafaFrame"},
-							{"name": "columns", "type": "string[]", "description": "Columns to transpose"} ]
+							{"name": "columns", "type": "string[]", "description": "Columns to transpose [DimensionColumn, MeasureColumn]"} ]
 		},
 		"appendRow": {
 			"returnType": "Selection",
