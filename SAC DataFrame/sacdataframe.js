@@ -84,11 +84,13 @@ var getScriptPromisify = (src) => {
 		newDataFrame2(data, options) {
 			
 			var df = null;
-			/*
+			
 			if(this.dfd != null) {
 				
 				if(data != null) {
 					
+					console.log(data);
+					/*
 					var data_new = new Array();
 					
 					for(var i=0, i<data.length, i++) {
@@ -122,10 +124,11 @@ var getScriptPromisify = (src) => {
 					}
 					
 					df = new this.dfd.DataFrame(data_new, options);
+					*/
 				}
 				
 			}
-			*/
+			
 			return df;
 		}
 		
