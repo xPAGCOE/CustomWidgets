@@ -81,41 +81,41 @@ var getScriptPromisify = (src) => {
 		}
 		
 		// DataFrame creation
-		newDataFrame2(data, options) {
+		newDataFrame2(indata, options) {
 			
 			var df = null;
 			
 			if(this.dfd != null) {
 				
-				if(data != null) {
+				if(indata != null) {
 					
 					console.log("Received data");
-					console.log(data);
+					console.log(indata);
 					
 					var data_new = new Array();
 					
-					for(var i=0, i<data.length, i++) {
+					for(var i=0, i<indata.length, i++) {
 						
-						if(data[i].data == null) { 
+						if(indata[i].data.length == 0) { 
 							continue; 
 						}
 
 						data_new[i] = new Array();
 						/*
-						for(var j=0, j<data[i].data.length, j++) {
+						for(var j=0, j<indata[i].data.length, j++) {
 							
-							switch(data[i].data[j].type) {
+							switch(indata[i].data[j].type) {
 								case string:
-									data_new[i][j] = data[i].data[j].strValue;
+									data_new[i][j] = indata[i].data[j].strValue;
 									break;
 								case integer:
-									data_new[i][j] = data[i].data[j].intValue;
+									data_new[i][j] = indata[i].data[j].intValue;
 									break;
 								case number:
-									data_new[i][j] = data[i].data[j].numValue;
+									data_new[i][j] = indata[i].data[j].numValue;
 									break;
 								case boolean:
-									data_new[i][j] = data[i].data[j].boolValue;
+									data_new[i][j] = indata[i].data[j].boolValue;
 									break;
 								default:
 									break;
@@ -124,7 +124,7 @@ var getScriptPromisify = (src) => {
 						}
 					}
 					
-					df = new this.dfd.DataFrame(data_new, options);
+					//df = new this.dfd.DataFrame(data_new, options);
 				}
 				
 			}
