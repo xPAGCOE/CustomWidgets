@@ -89,9 +89,9 @@ var getScriptPromisify = (src) => {
 				
 				if(data != null) {
 					
+					console.log("Received data");
 					console.log(data);
 					
-					/*
 					var data_new = new Array();
 					
 					for(var i=0, i<data.length, i++) {
@@ -101,10 +101,8 @@ var getScriptPromisify = (src) => {
 						}
 
 						data_new[i] = new Array();
-						
+						/*
 						for(var j=0, j<data[i].data.length, j++) {
-							
-							console.log(data[i]);
 							
 							switch(data[i].data[j].type) {
 								case string:
@@ -122,11 +120,11 @@ var getScriptPromisify = (src) => {
 								default:
 									break;
 							}
+						*/
 						}
 					}
 					
 					df = new this.dfd.DataFrame(data_new, options);
-					*/
 				}
 				
 			}
