@@ -80,6 +80,19 @@ var getScriptPromisify = (src) => {
 			return df;
 		}
 		
+		// DataFrame creation
+		newDataFrame2(data, options) {
+			
+			var df = null;
+			
+			if(this.dfd != null) {
+				
+				df = new this.dfd.DataFrame(data, options);
+			}
+			
+			return df;
+		}
+		
 		// Internal DataFrame creation from existing object
 		newInternalDataFrame(dataframe) {
 			var df = null;
