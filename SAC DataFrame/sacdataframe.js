@@ -89,13 +89,15 @@ var getScriptPromisify = (src) => {
 				
 				if(data != null) {
 					
-					var data_new = new Array(data.length);
+					var data_new = new Array();
 					
 					for(var i=0, i<data.length, i++) {
 						
-						if(data[i].data == null) { continue; }
+						if(data[i].data === null) { 
+							continue; 
+						}
 						
-						data_new[i] = new Array(data[i].data.length);
+						data_new[i] = new Array();
 						
 						for(var j=0, j<data[i].data.length, j++) {
 							
