@@ -102,16 +102,16 @@ var getScriptPromisify = (src) => {
 						for(var j=0, j<data[i].data.length, j++) {
 							
 							switch(data[i].data[j].type) {
-								case sdk_com_sap_sample_sacdataframe__0_AnyType.string:
+								case string:
 									data_new[i][j] = data[i].data[j].strValue;
 									break;
-								case sdk_com_sap_sample_sacdataframe__0_AnyType.integer:
+								case integer:
 									data_new[i][j] = data[i].data[j].intValue;
 									break;
-								case sdk_com_sap_sample_sacdataframe__0_AnyType.number:
+								case number:
 									data_new[i][j] = data[i].data[j].numValue;
 									break;
-								case sdk_com_sap_sample_sacdataframe__0_AnyType.boolean:
+								case boolean:
 									data_new[i][j] = data[i].data[j].boolValue;
 									break;
 								default:
