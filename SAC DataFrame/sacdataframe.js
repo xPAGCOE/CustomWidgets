@@ -87,7 +87,41 @@ var getScriptPromisify = (src) => {
 			
 			if(this.dfd != null) {
 				
-				df = new this.dfd.DataFrame(data, options);
+				if(data != null) {
+					
+					var data_new = new Array(data.length);
+					
+					for(var i=0, i<data.length, i++) {
+						
+						if(data[i].data == null) { continue; }
+						
+						data_new[i] = new Array(data[i].data.length);
+						
+						for(var j=0, j<data[i].data.length, j++) {
+							
+							switch(data[i].data[j].type) {
+								case AnyType.string:
+									data_new[i][j] = data[i].data[j].strValue;
+									break;
+								case AnyType.integer:
+									data_new[i][j] = data[i].data[j].intValue;
+									break;
+								case AnyType.number:
+									data_new[i][j] = data[i].data[j].numValue;
+									break;
+								case AnyType.boolean:
+									data_new[i][j] = data[i].data[j].boolValue;
+									break;
+								default:
+									break;
+							}
+							
+						}
+					}
+					
+					df = new this.dfd.DataFrame(data_new, options);
+				}
+				
 			}
 			
 			return df;
